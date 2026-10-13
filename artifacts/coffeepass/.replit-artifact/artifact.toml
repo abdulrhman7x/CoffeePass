@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "CoffeePass"
+description = "A fresh starter project for a CODED course, set up with Next.js App Router, TypeScript, and Tailwind CSS. Kept intentionally minimal so instructor Agent Skills can be added before development begins."
+version = "1.0.0"
+id = "artifacts/coffeepass"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/", "/_next/hmr" ]
+localPort = 25189
+
+[services.development]
+run = "pnpm --filter @workspace/coffeepass run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/coffeepass", "run", "build" ]
+
+[services.production.run]
+args = [ "pnpm", "--filter", "@workspace/coffeepass", "run", "start" ]
+
+[services.production.run.env]
+PORT = "25189"
+NODE_ENV = "production"
+
+[services.env]
+PORT = "25189"

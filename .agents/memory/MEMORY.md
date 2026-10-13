@@ -1,0 +1,1 @@
+- [Next.js App Router in Replit](nextjs-replit-routing.md) — Remove leftover `src/pages` during conversion; proxied preview HMR needs its route and allowed origin.

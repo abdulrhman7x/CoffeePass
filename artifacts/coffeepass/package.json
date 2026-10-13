@@ -1,0 +1,26 @@
+{
+  "name": "@workspace/coffeepass",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0 --port $PORT",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0 --port $PORT",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^16.4.0",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.14",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "postcss": "^8.5.6",
+    "tailwindcss": "catalog:",
+    "typescript": "^5.9.3"
+  }
+}
