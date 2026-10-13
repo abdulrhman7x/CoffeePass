@@ -1,0 +1,9 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/cafes/page": "/cafes",
+  "/checkout/page": "/checkout",
+  "/memberships/page": "/memberships",
+  "/page": "/",
+  "/pass/page": "/pass"
+}
