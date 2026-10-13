@@ -2,6 +2,12 @@
 
 _Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
 
+## CoffeePass specification precedence
+
+- For the `artifacts/coffeepass` app, `attached_assets/skill_(1)_1791909116301.md` is the primary technical specification. Read it before CoffeePass implementation work.
+- Skills under `.agents/skills/` provide supplemental design, accessibility-review, or React performance guidance. They do not override the instructor's specification or the user's explicit product requirements. If a conflict arises, follow the instructor's specification and ask the user before proceeding.
+- The shared Express/PostgreSQL API scaffold described below is separate workspace infrastructure; do not use it as CoffeePass's backend or database. CoffeePass follows its primary specification for Next.js API routes and MongoDB Atlas.
+
 ## Run & Operate
 
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
