@@ -4,7 +4,10 @@ import { CAFES, PLANS, type PlanId } from "@/lib/data";
 import { PassClient } from "@/components/PassClient";
 import { DemoBanner, Eyebrow } from "@/components/Banner";
 
-export const metadata: Metadata = { title: "My Pass (demo)" };
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getT();
+  return { title: t.pass.eyebrow };
+}
 
 export default async function Pass() {
   const { lang, t: full } = await getT();

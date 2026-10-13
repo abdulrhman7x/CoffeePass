@@ -12,6 +12,8 @@ export default async function Home() {
   const h = t.home;
   const numberFormat = new Intl.NumberFormat(lang === "ar" ? "ar-KW" : "en-KW");
   const perCupFormat = new Intl.NumberFormat(lang === "ar" ? "ar-KW" : "en-KW", { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+  const plusPlan = PLANS.find((plan) => plan.id === "plus");
+  if (!plusPlan) throw new Error("CoffeePass Plus plan is missing from product data.");
   return (
     <>
       <section className="mx-auto grid max-w-6xl gap-10 px-5 pb-16 pt-10 md:grid-cols-[1.1fr_1fr] md:items-center md:pt-16">
@@ -32,7 +34,11 @@ export default async function Home() {
           </div>
           <div className="absolute -bottom-6 start-4 end-4 rounded-3xl bg-paper/95 p-4 shadow-[0_24px_50px_-30px_rgb(43_26_18/.6)] backdrop-blur sm:end-auto sm:w-80">
             <div className="flex justify-between text-sm"><span className="font-semibold text-roast">{t.plans.plus.name}</span><span className="rounded-full bg-sand px-2 py-0.5 text-[10px] font-medium text-bean">{h.samplePass}</span></div>
-            <p className="mt-1 text-end text-xs text-bean/60" dir="ltr">{numberFormat.format(7)} / {numberFormat.format(10)}</p>
+            <p className="mt-1 flex flex-wrap items-center justify-end gap-1 text-xs text-bean/60" dir={lang === "ar" ? "rtl" : "ltr"}>
+              <span dir="ltr">{numberFormat.format(plusPlan.price)} {t.kwd} {t.perMonth}</span>
+              <span aria-hidden="true">·</span>
+              <span>{numberFormat.format(plusPlan.cups)} {t.cups}</span>
+            </p>
             <div className="mt-2"><StampRow total={10} filled={3} size="sm" /></div>
           </div>
         </div>
@@ -82,6 +88,18 @@ export default async function Home() {
               </li>
             ))}
           </ol>
+          <div className="mt-12 border-t border-cream/15 pt-9">
+            <h3 className="font-display text-2xl text-cream sm:text-3xl">{h.audienceTitle}</h3>
+            <ul className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              {h.audiences.map(([title, body], i) => (
+                <li key={title} className="rounded-2xl border border-cream/10 bg-cream/5 p-4">
+                  <span className="font-mono text-xs tabular-nums text-mint">{(i + 1).toLocaleString(lang === "ar" ? "ar-KW" : "en")}</span>
+                  <h4 className="mt-3 font-semibold text-cream">{title}</h4>
+                  <p className="mt-1 text-sm leading-relaxed text-cream/65">{body}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 

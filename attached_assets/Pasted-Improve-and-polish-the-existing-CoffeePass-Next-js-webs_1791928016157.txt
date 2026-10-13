@@ -1,0 +1,105 @@
+Improve and polish the existing CoffeePass Next.js website based on the following approved feedback.
+
+IMPORTANT:
+- This is a focused refinement of the completed Phase 1, NOT a rebuild.
+- Preserve the existing Next.js App Router, TypeScript, Tailwind CSS architecture.
+- Follow my instructor's Shop Project Skill as the primary technical specification.
+- Use the installed Frontend Design, Web Design Guidelines, and React Best Practices skills where applicable.
+- Keep all five existing pages, working functionality, membership plans, pricing, café data, bilingual support, and overall premium CoffeePass identity.
+- Do not start Phase 2, connect MongoDB, integrate Stripe, or deploy anything.
+
+## 1. Membership selection and checkout
+
+- Restore an elegant shopping cart icon in the navigation bar.
+- Show a small badge displaying "1" when a membership is selected.
+- Only one membership can be selected at a time. Selecting another plan replaces the previous selection.
+- Clicking the cart icon opens Checkout.
+- When a user clicks "Select Plan", show a clear confirmation step displaying the chosen plan and price.
+- After the user confirms, automatically navigate to Checkout.
+- Keep the selected plan and cart badge synchronized, including after refreshing the page.
+- Preserve the currently working checkout selection logic.
+- Keep checkout in demo mode without real payments.
+
+## 2. Navigation and profile icon
+
+- Remove the text "My Pass" from the top navigation bar.
+- Replace it with a premium, minimalist profile icon.
+- Position the profile icon at the far-right end of the navigation controls, followed immediately by the language switcher.
+- For now, clicking the profile icon should open the existing My Pass page.
+- Do not implement login or authentication yet.
+- Make the layout responsive and correctly handle Arabic RTL.
+
+## 3. Creative language switcher
+
+- Redesign the current language control into a distinctive, elegant, intuitive language icon.
+- Use a subtle animated dropdown or popover offering العربية and English.
+- Clearly indicate the currently selected language.
+- Preserve the user's existing language-switching functionality.
+- Make it keyboard-accessible, mobile-friendly, and RTL-compatible.
+- Keep the animations smooth, tasteful, and lightweight.
+
+## 4. CoffeePass logo and branding
+
+- Improve the current logo's beige-and-brown color treatment.
+- Create a more cohesive, sophisticated logo color combination that harmonizes with the existing warm coffee-inspired website palette.
+- Improve contrast and visual clarity.
+- Preserve the CoffeePass brand name and recognizable identity.
+- Do not redesign the entire website or randomly introduce unrelated colors.
+
+## 5. Membership cards
+
+- Reduce unnecessary empty space and excessive card height.
+- Improve visual hierarchy, spacing, alignment, and consistency.
+- Preserve all plan details, pricing, and the Plus rollover allowance of 4 cups.
+
+## 6. Café discovery page
+
+- Improve the visual presentation of the existing ten featured cafés.
+- Use tasteful café cards with better hierarchy, relevant imagery where legally and technically appropriate, and useful descriptions.
+- Preserve the existing ten café brands.
+- Do not imply official commercial partnerships.
+- Replace wording such as "10 partners" with "10 featured cafés" or an equivalent accurate translation.
+
+## 7. Homepage audience section
+
+- Refine the "Made for every kind of coffee day" section.
+- Bring back the original audience-based concept: Students, Professionals, Coffee Lovers, and Café Visitors.
+- Integrate it elegantly into the current design rather than restoring the old layout exactly.
+- Preserve the homepage's premium appearance and existing useful content.
+
+## 8. Arabic, English, and mobile polish
+
+- Review all five pages for translation consistency.
+- Fix any awkward Arabic wording.
+- Ensure correct RTL direction, navigation alignment, icon placement, and spacing.
+- Check desktop, tablet, and mobile layouts.
+- Maintain accessibility and responsive performance.
+
+## 9. AI Barista
+
+- Preserve the current AI Barista section and its demo functionality.
+- Prepare a brief plan for restoring the original real AI and Kuwait weather API integration in a future approved phase.
+- Do not integrate external APIs or add API keys during this refinement.
+
+## 10. Functional testing
+
+After completing the improvements, test:
+- Membership selection and confirmation.
+- Automatic navigation to Checkout.
+- Correct plan and price display.
+- Cart badge updates and persistence.
+- Changing the selected plan.
+- Profile icon navigation.
+- Language switching and RTL layout.
+- My Pass demo functionality and cup redemption.
+- Desktop and mobile responsiveness.
+
+Run TypeScript checks and a production build.
+
+Report:
+1. Which improvements were completed.
+2. Which files were modified.
+3. Test results and any remaining issues.
+4. Any features intentionally deferred to future phases.
+
+Do not modify the original CoffeePass website or its deployment. Do not proceed to Phase 2 without my approval.

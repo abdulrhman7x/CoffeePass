@@ -7,6 +7,8 @@ CoffeePass is a bilingual Arabic/English coffee membership platform for Kuwait. 
 
 The homepage's ten-brand roster is authoritative: Caribou, Starbucks, Toby’s Estate, % Arabica, Coffee Bean, Costa Coffee, Hornet, Barton, Ananas, and Pick. The Plus plan's unused-coffee rollover limit is 4 cups.
 
+Present these names as featured brands in the demo roster only. Do not label them as partners or imply official relationships, menu claims, or active redemptions.
+
 **Why:** The user explicitly specified these product requirements and designated the instructor Skill as primary.
 
 **How to apply:** Keep these requirements intact in future CoffeePass planning and implementation. If the instructor Skill conflicts with a user request, ask before making the conflicting change. Other mismatched plan benefits remain unconfirmed.

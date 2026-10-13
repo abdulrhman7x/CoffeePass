@@ -1,6 +1,6 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/cafes/page.js")
-R.c("server/chunks/ssr/0o91_next_dist_0dhfhcow879vo._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__0apugvesak54p._.js")
+R.c("server/chunks/ssr/0o91_next_dist_1hragsi9dy70v._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0im4sqffxl27q._.js")
 R.c("server/chunks/ssr/0o91_next_dist_esm_server_1idnkl76ya4nx._.js")
 R.c("server/chunks/ssr/0o91_next_dist_esm_shared_lib_1vepxuydzco5w._.js")
 R.c("server/chunks/ssr/0o91_next_dist_esm_lib_1e-34yogkx0k7._.js")

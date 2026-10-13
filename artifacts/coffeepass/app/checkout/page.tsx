@@ -4,7 +4,10 @@ import { PLANS, type PlanId } from "@/lib/data";
 import { CheckoutClient } from "@/components/CheckoutClient";
 import { DemoBanner, Eyebrow } from "@/components/Banner";
 
-export const metadata: Metadata = { title: "Demo checkout" };
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getT();
+  return { title: t.checkout.eyebrow };
+}
 
 export default async function Checkout() {
   const { lang, t: full } = await getT();

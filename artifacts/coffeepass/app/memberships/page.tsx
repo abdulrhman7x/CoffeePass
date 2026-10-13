@@ -4,7 +4,10 @@ import { PLANS, type PlanId } from "@/lib/data";
 import { PlanPicker } from "@/components/PlanPicker";
 import { Eyebrow } from "@/components/Banner";
 
-export const metadata: Metadata = { title: "Memberships" };
+export async function generateMetadata(): Promise<Metadata> {
+  const { t } = await getT();
+  return { title: t.memberships.eyebrow };
+}
 
 export default async function Memberships() {
   const { lang, t } = await getT();
@@ -27,7 +30,22 @@ export default async function Memberships() {
       </div>
       <div className="rise d2 mt-12">
         <PlanPicker plans={formattedPlans}
-          l={{ names: t.plans, select: m.select, selected: m.selected, popular: m.popular, continue: m.continue, kwd: t.kwd, cups: t.cups, perMonth: t.perMonth, perCup: t.perCup, rollovers, savedNote: m.savedNote }} />
+          l={{
+            names: t.plans,
+            select: m.select,
+            selected: m.selected,
+            popular: m.popular,
+            planChoices: m.planChoices,
+            confirmHeading: m.confirmHeading,
+            confirm: m.confirm,
+            cancel: m.cancel,
+            kwd: t.kwd,
+            cups: t.cups,
+            perMonth: t.perMonth,
+            perCup: t.perCup,
+            rollovers,
+            savedNote: m.savedNote,
+          }} />
       </div>
       <section className="mt-20">
         <h2 className="font-display text-3xl text-roast">{m.compareTitle}</h2>

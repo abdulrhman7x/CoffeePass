@@ -69,8 +69,8 @@ const __TURBOPACK__default__export__ = fontData;
 __turbopack_context__.s([
     "default",
     ()=>RootLayout,
-    "metadata",
-    ()=>metadata
+    "generateMetadata",
+    ()=>generateMetadata
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$4$2e$0_$40$types$2b$node$40$25$2e$9$2e$6_react$2d$dom$40$19$2e$1$2e$0_react$40$19$2e$1$2e$0_$5f$react$40$19$2e$1$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/.pnpm/next@16.4.0_@types+node@25.9.6_react-dom@19.1.0_react@19.1.0__react@19.1.0/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$fraunces_af9e3932$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[next]/internal/font/google/fraunces_af9e3932.js [app-rsc] (ecmascript)");
@@ -85,13 +85,16 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$artifacts$2f$coffeepass$2f$l
 ;
 ;
 ;
-const metadata = {
-    title: {
-        default: "CoffeePass · Kuwait",
-        template: "%s · CoffeePass"
-    },
-    description: "A monthly coffee membership for Kuwait's favourite cafés."
-};
+async function generateMetadata() {
+    const { lang, t } = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$artifacts$2f$coffeepass$2f$lib$2f$i18n$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getT"])();
+    return {
+        title: {
+            default: lang === "ar" ? "كوفي باس · الكويت" : "CoffeePass · Kuwait",
+            template: `%s · ${t.brand}`
+        },
+        description: lang === "ar" ? "نموذج دراسي ثنائي اللغة لفكرة اشتراك القهوة في الكويت. الدفع واستبدال الأكواب تجريبيان." : "A bilingual course demo for a Kuwait coffee membership concept. Checkout and café redemptions are simulated."
+    };
+}
 async function RootLayout({ children }) {
     const { lang, t } = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$artifacts$2f$coffeepass$2f$lib$2f$i18n$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getT"])();
     const items = [
@@ -120,14 +123,19 @@ async function RootLayout({ children }) {
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$4$2e$0_$40$types$2b$node$40$25$2e$9$2e$6_react$2d$dom$40$19$2e$1$2e$0_react$40$19$2e$1$2e$0_$5f$react$40$19$2e$1$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$artifacts$2f$coffeepass$2f$components$2f$Nav$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Nav"], {
                     items: items,
                     brand: t.brand,
-                    langSwitch: t.langSwitch,
-                    langLabel: t.langLabel,
+                    lang: lang,
                     primaryLabel: t.primaryNav,
                     mobileLabel: t.mobileNav,
-                    next: lang === "ar" ? "en" : "ar"
+                    labels: {
+                        cart: t.nav.cart,
+                        cartSelected: t.nav.cartSelected,
+                        profile: t.nav.pass,
+                        languageMenu: t.languageMenu,
+                        languages: t.languages
+                    }
                 }, void 0, false, {
                     fileName: "[project]/artifacts/coffeepass/app/layout.tsx",
-                    lineNumber: 24,
+                    lineNumber: 32,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$4$2e$0_$40$types$2b$node$40$25$2e$9$2e$6_react$2d$dom$40$19$2e$1$2e$0_react$40$19$2e$1$2e$0_$5f$react$40$19$2e$1$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -135,7 +143,7 @@ async function RootLayout({ children }) {
                     children: children
                 }, void 0, false, {
                     fileName: "[project]/artifacts/coffeepass/app/layout.tsx",
-                    lineNumber: 25,
+                    lineNumber: 46,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$4$2e$0_$40$types$2b$node$40$25$2e$9$2e$6_react$2d$dom$40$19$2e$1$2e$0_react$40$19$2e$1$2e$0_$5f$react$40$19$2e$1$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
@@ -151,36 +159,36 @@ async function RootLayout({ children }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/artifacts/coffeepass/app/layout.tsx",
-                                lineNumber: 28,
+                                lineNumber: 49,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$4$2e$0_$40$types$2b$node$40$25$2e$9$2e$6_react$2d$dom$40$19$2e$1$2e$0_react$40$19$2e$1$2e$0_$5f$react$40$19$2e$1$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 children: t.footer.credit
                             }, void 0, false, {
                                 fileName: "[project]/artifacts/coffeepass/app/layout.tsx",
-                                lineNumber: 29,
+                                lineNumber: 50,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/artifacts/coffeepass/app/layout.tsx",
-                        lineNumber: 27,
+                        lineNumber: 48,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/artifacts/coffeepass/app/layout.tsx",
-                    lineNumber: 26,
+                    lineNumber: 47,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/artifacts/coffeepass/app/layout.tsx",
-            lineNumber: 23,
+            lineNumber: 31,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/artifacts/coffeepass/app/layout.tsx",
-        lineNumber: 22,
+        lineNumber: 30,
         columnNumber: 5
     }, this);
 }
@@ -220,12 +228,17 @@ const en = {
         memberships: "Memberships",
         cafes: "Cafés",
         checkout: "Checkout",
-        pass: "My Pass"
+        pass: "My Pass",
+        cart: "Cart",
+        cartSelected: "Cart, one membership selected"
     },
     primaryNav: "Primary navigation",
     mobileNav: "Mobile navigation",
-    langSwitch: "عربي",
-    langLabel: "Switch to Arabic",
+    languageMenu: "Choose language",
+    languages: {
+        en: "English",
+        ar: "العربية"
+    },
     demo: "Demo",
     kwd: "KWD",
     cups: "coffees",
@@ -255,11 +268,11 @@ const en = {
             "Ten cafés.",
             "Every cup counted."
         ],
-        lede: "Pay once a month in KWD, then order your usual at Kuwait\u2019s favourite coffee brands. Your pass keeps the count.",
+        lede: "Explore sample memberships priced in KWD across ten featured cafés. Checkout and redemptions are demo-only.",
         heroAlt: "A latte in a celadon cup on a sunlit café table.",
         samplePass: "Sample pass",
         ctaPrimary: "Choose a membership",
-        ctaSecondary: "See partner cafés",
+        ctaSecondary: "Explore cafés",
         howTitle: "How it works",
         how: [
             [
@@ -268,11 +281,11 @@ const en = {
             ],
             [
                 "Show your pass",
-                "At any partner counter, your pass is your card."
+                "In a live service, you would show your pass at a participating café."
             ],
             [
                 "Watch it fill",
-                "Every cup gets a stamp. The balance updates itself."
+                "A demo stamp previews how your cup balance would update."
             ]
         ],
         aiEyebrow: "CoffeePass AI Barista · demo",
@@ -309,9 +322,28 @@ const en = {
                 "Long conversations, one more cup, no math at the counter."
             ]
         ],
-        cafesTitle: "Ten brands, one balance",
+        audienceTitle: "A ritual for every kind of coffee person",
+        audiences: [
+            [
+                "Students",
+                "A familiar pause between lectures and long study days."
+            ],
+            [
+                "Professionals",
+                "From the first meeting to the last deadline."
+            ],
+            [
+                "Coffee lovers",
+                "Make room for a new favourite, one cup at a time."
+            ],
+            [
+                "Café visitors",
+                "Turn the next outing into a chance to explore."
+            ]
+        ],
+        cafesTitle: "Ten featured cafés, one coffee pass",
         cafesLink: "Explore all cafés",
-        cafesNote: "Featured brands in this course demo; no real café partnerships or redemptions are active.",
+        cafesNote: "Names are shown for this course demo only; no official café partnerships or redemptions are active.",
         valueTitle: "Why a pass",
         value: [
             [
@@ -337,26 +369,31 @@ const en = {
         select: "Select plan",
         selected: "Selected",
         popular: "Most chosen",
-        continue: "Continue to demo checkout",
+        planChoices: "Choose one membership plan",
+        confirmHeading: "Review your selection",
+        confirm: "Confirm and continue to Checkout",
+        cancel: "Keep browsing plans",
         compareTitle: "Side by side",
         rows: [
             "Coffees per month",
             "Monthly price",
             "Price per cup",
             "Rollover",
-            "Partner cafés"
+            "Featured cafés"
         ],
-        all10: "All 10",
+        all10: "All 10 featured cafés",
         upTo4: "Up to 4 cups",
         none: "None",
-        savedNote: "Selection saved on this device only."
+        savedNote: "One plan at a time. Your selection is saved on this device."
     },
     cafes: {
-        eyebrow: "Partner cafés",
-        title: "Ten brands. Your usual, wherever you are.",
-        lede: "A sample café roster for this course project; no real partnerships or redemptions are active.",
-        count: "partners",
-        accepted: "Featured in demo"
+        eyebrow: "Featured cafés",
+        title: "Ten cafés. A coffee moment wherever you are.",
+        lede: "A sample roster for this course project. Notes are illustrative; no official partnerships, menus, or redemptions are implied.",
+        count: "featured cafés",
+        featured: "Featured in demo",
+        moment: "Coffee moment",
+        imageAlt: "Latte on a sunlit café table."
     },
     checkout: {
         eyebrow: "Checkout",
@@ -407,12 +444,17 @@ const ar = {
         memberships: "الاشتراكات",
         cafes: "المقاهي",
         checkout: "الدفع",
-        pass: "بطاقتي"
+        pass: "بطاقتي",
+        cart: "السلة",
+        cartSelected: "السلة، اشتراك واحد محدد"
     },
     primaryNav: "التنقل الرئيسي",
-    mobileNav: "التنقل على الجوال",
-    langSwitch: "EN",
-    langLabel: "التبديل إلى الإنجليزية",
+    mobileNav: "التنقل عبر الهاتف",
+    languageMenu: "اختر اللغة",
+    languages: {
+        en: "English",
+        ar: "العربية"
+    },
     demo: "تجريبي",
     kwd: "د.ك",
     cups: "أكواب",
@@ -422,19 +464,19 @@ const ar = {
     plans: {
         basic: {
             name: "أساسي",
-            line: "لفلات وايت نهاية الأسبوع."
+            line: "لفلات وايت هادئ في نهاية الأسبوع."
         },
         plus: {
             name: "بلس",
-            line: "الأكثر اختياراً. كوب كل كم يوم، بدون هدر."
+            line: "الأكثر شيوعاً. كوب كل بضعة أيام، من دون هدر."
         },
         premium: {
             name: "بريميوم",
-            line: "قهوة كل يوم، طلبات الدوام، وسهرات الديوانية."
+            line: "قهوة يومية، ومشاوير المكتب، وسهرات الديوانية."
         }
     },
-    rollover: (n)=>`حتى ${n} أكواب غير مستخدمة تنتقل للشهر التالي`,
-    noRollover: "يتجدد كل شهر",
+    rollover: (n)=>`يمكن ترحيل حتى ${n} أكواب غير مستخدمة إلى الشهر التالي`,
+    noRollover: "ينتهي الرصيد بنهاية الشهر",
     home: {
         eyebrow: "اشتراك القهوة في الكويت",
         title: [
@@ -442,108 +484,132 @@ const ar = {
             "عشرة مقاهي.",
             "كل كوب محسوب."
         ],
-        lede: "ادفع مرة بالشهر بالدينار، واطلب قهوتك المعتادة من أشهر مقاهي الكويت. البطاقة تحسب عنك.",
+        lede: "استكشف باقات تجريبية بالدينار الكويتي وقائمة من عشرة مقاهٍ مختارة. الدفع وعمليات الاستبدال غير متاحة في هذا العرض.",
         heroAlt: "لاتيه في كوب بلون أخضر هادئ على طاولة مقهى مضاءة بالشمس.",
         samplePass: "بطاقة تجريبية",
         ctaPrimary: "اختر اشتراكك",
-        ctaSecondary: "شوف المقاهي",
+        ctaSecondary: "استكشف المقاهي",
         howTitle: "طريقة الاستخدام",
         how: [
             [
                 "اختر عدد الأكواب",
-                "٥ أو ١٠ أو ٢٠ كوب بالشهر. سعر ثابت بدون مفاجآت."
+                "٥ أو ١٠ أو ٢٠ كوباً شهرياً، بسعر ثابت ومن دون مفاجآت."
             ],
             [
                 "اعرض بطاقتك",
-                "عند أي مقهى شريك، بطاقتك هي وسيلتك."
+                "في الخدمة الفعلية، ستعرض بطاقتك لدى المقهى المشارك."
             ],
             [
                 "تابع الرصيد",
-                "كل كوب ينختم، والرصيد يتحدث تلقائياً."
+                "الختم التجريبي يوضح كيف سيتغير رصيد الأكواب."
             ]
         ],
         aiEyebrow: "باريستا كوفي باس الذكي · تجريبي",
         aiTitle: "قهوة مناسبة لهاللحظة.",
-        aiLede: "لمحة بسيطة عن كيف يساعدك كوفي باس تكتشف قهوتك الجاية.",
+        aiLede: "لمحة عن كيف يمكن لكوفي باس مساعدتك في اختيار قهوتك القادمة.",
         aiButton: "اعرض اقتراحاً تجريبياً آخر",
         aiNotice: "اقتراحات تجريبية فقط؛ لا يوجد اتصال مباشر بالذكاء الاصطناعي أو الطقس.",
         aiSuggestions: [
-            "عصرية الكويت دافية؟ جرّب سبانش لاتيه بارد.",
-            "بداية هادية لليوم تناسبها قهوة مقطرة ناعمة.",
-            "تبي تركّز؟ فلات وايت متوازن بداية حلوة."
+            "في عصر دافئ في الكويت، جرّب سبانش لاتيه مثلجاً.",
+            "بداية هادئة لليوم تناسبها قهوة مقطرة ناعمة.",
+            "تحتاج إلى تركيز؟ ابدأ بفلات وايت متوازن."
         ],
-        daysTitle: "مصمم لكل أنواع أيام القهوة",
-        daysLede: "صباح في شرق، عصرية في السالمية، مشوار للأفنيوز. البطاقة تمشي مع أسبوعك.",
+        daysTitle: "لكل يوم قهوة طريقته",
+        daysLede: "صباح في شرق، وعصرية في السالمية، ومشوار إلى الأفنيوز؛ البطاقة ترافقك طوال الأسبوع.",
         days: [
             [
                 "06:40",
-                "مشوار الصبح",
-                "خذ قهوتك بالطريق قبل زحمة شارع الخليج."
+                "مشوار الصباح",
+                "قهوة في طريقك قبل ازدحام شارع الخليج."
             ],
             [
                 "11:15",
                 "قهوة الاجتماع",
-                "جيب الفريق. بطاقة وحدة وجولة كورتادو."
+                "اصطحب فريقك لقهوة كورتادو؛ بطاقة واحدة تكفي."
             ],
             [
                 "16:30",
                 "استراحة العصر",
-                "سبانش لاتيه بارد وقت الحر."
+                "سبانش لاتيه مثلج في أشد ساعات الحر."
             ],
             [
                 "21:00",
-                "سوالف آخر الليل",
-                "سوالف طويلة، كوب زيادة، وبدون حسابات عند الكاشير."
+                "لقاء آخر الليل",
+                "أحاديث تمتد، وكوب إضافي، بلا حسابات عند الكاشير."
             ]
         ],
-        cafesTitle: "عشر علامات، رصيد واحد",
+        audienceTitle: "لحظات قهوة تناسب الجميع",
+        audiences: [
+            [
+                "الطلاب",
+                "استراحة مألوفة بين المحاضرات وأيام الدراسة الطويلة."
+            ],
+            [
+                "المهنيون",
+                "من أول اجتماع إلى آخر موعد لتسليم العمل."
+            ],
+            [
+                "عشاق القهوة",
+                "اكتشف قهوتك المفضلة الجديدة، كوباً بعد كوب."
+            ],
+            [
+                "زوار المقاهي",
+                "اجعل زيارتك القادمة فرصة لاكتشاف مكان جديد."
+            ]
+        ],
+        cafesTitle: "عشرة مقاهٍ مختارة، وبطاقة قهوة واحدة",
         cafesLink: "استكشف كل المقاهي",
-        cafesNote: "علامات معروضة في نموذج الدورة؛ لا توجد شراكات أو عمليات استبدال حقيقية.",
-        valueTitle: "ليش البطاقة",
+        cafesNote: "الأسماء معروضة لهذا النموذج الدراسي فقط؛ لا توجد شراكات رسمية أو عمليات استبدال حقيقية.",
+        valueTitle: "ما الذي يميز كوفي باس؟",
         value: [
             [
                 "من ١٫٢٠٠ د.ك للكوب",
-                "مع بريميوم ينزل سعر الكوب إلى ١٫٢٠٠ د.ك."
+                "تخفض باقة بريميوم سعر الكوب إلى ١٫٢٠٠ د.ك."
             ],
             [
                 "ترحيل مع بلس",
-                "حتى ٤ أكواب غير مستخدمة تنتقل للشهر الجاي."
+                "يمكن ترحيل حتى ٤ أكواب غير مستخدمة إلى الشهر التالي."
             ],
             [
-                "غيّر أي شهر",
-                "انتقل بين الباقات متى ما تغير روتينك."
+                "بدّل باقتك شهرياً",
+                "غيّر باقتك عندما يتغير روتينك."
             ]
         ],
-        closingTitle: "كوبك الجاي محسوب من الحين.",
+        closingTitle: "كوبك القادم محسوب مسبقاً.",
         closingCta: "ابدأ مع بلس"
     },
     memberships: {
         eyebrow: "الاشتراكات",
-        title: "اختر كمية القهوة اللي يحتاجها شهرك.",
+        title: "اختر الباقة المناسبة لاحتياجك الشهري.",
         lede: "قارن بين ثلاث باقات تجريبية وقائمة من عشرة مقاهٍ. الأسعار بالدينار الكويتي؛ لا توجد عمليات استبدال حقيقية.",
         select: "اختر الباقة",
         selected: "تم الاختيار",
-        popular: "الأكثر اختياراً",
-        continue: "تابع إلى الدفع التجريبي",
+        popular: "الأكثر شيوعاً",
+        planChoices: "اختر باقة اشتراك واحدة",
+        confirmHeading: "راجع اختيارك",
+        confirm: "أكّد وتابع إلى الدفع",
+        cancel: "تابع استكشاف الباقات",
         compareTitle: "مقارنة",
         rows: [
-            "الأكواب شهرياً",
+            "أكواب القهوة شهرياً",
             "السعر الشهري",
             "سعر الكوب",
-            "الترحيل",
-            "المقاهي الشريكة"
+            "ترحيل الأكواب",
+            "المقاهي المختارة"
         ],
-        all10: "الكل (١٠)",
+        all10: "المقاهي العشرة المختارة",
         upTo4: "حتى ٤ أكواب",
         none: "لا يوجد",
-        savedNote: "الاختيار محفوظ على هذا الجهاز فقط."
+        savedNote: "يمكنك اختيار باقة واحدة. اختيارك محفوظ على هذا الجهاز."
     },
     cafes: {
-        eyebrow: "المقاهي الشريكة",
-        title: "عشر علامات. قهوتك المعتادة وين ما كنت.",
-        lede: "قائمة مقاهي تجريبية لهذا المشروع الدراسي؛ لا توجد شراكات أو عمليات استبدال حقيقية.",
-        count: "مقاهٍ",
-        accepted: "ضمن العرض التجريبي"
+        eyebrow: "مقاهٍ مختارة",
+        title: "عشرة مقاهٍ. لحظة قهوة تناسب يومك.",
+        lede: "قائمة تجريبية لهذا المشروع الدراسي. الأوصاف للتصور فقط؛ لا توجد شراكات أو قوائم رسمية أو عمليات استبدال حقيقية.",
+        count: "مقاهٍ مختارة",
+        featured: "ضمن العرض التجريبي",
+        moment: "لحظة قهوة",
+        imageAlt: "لاتيه على طاولة مقهى مضاءة بالشمس."
     },
     checkout: {
         eyebrow: "الدفع",
@@ -552,10 +618,10 @@ const ar = {
         empty: "ما اخترت باقة بعد.",
         emptyCta: "اختر اشتراكك",
         plan: "الباقة",
-        monthly: "الأكواب الشهرية",
+        monthly: "أكواب القهوة الشهرية",
         rollover: "الترحيل",
         subtotal: "الإجمالي الشهري",
-        change: "غيّر الباقة",
+        change: "تغيير الباقة",
         confirm: "فعّل البطاقة التجريبية",
         done: "تم تفعيل البطاقة التجريبية. لم يتم خصم أي مبلغ.",
         viewPass: "افتح بطاقتي",
@@ -567,23 +633,23 @@ const ar = {
         holder: "صاحب البطاقة",
         guest: "عضو تجريبي",
         status: "الحالة",
-        active: "فعّالة (تجريبي)",
+        active: "فعّالة (نسخة تجريبية)",
         inactive: "غير فعّالة",
         balance: "الرصيد",
-        left: "متبقي هذا الشهر",
-        used: "مستخدم",
-        redeem: "محاكاة استبدال",
-        redeemNote: "يضيف ختم محلياً لمعاينة تغير الرصيد.",
+        left: "متبقية هذا الشهر",
+        used: "مستخدمة",
+        redeem: "سجّل استخداماً تجريبياً",
+        redeemNote: "يُضاف ختم تجريبي على هذا الجهاز لمعاينة تغيّر الرصيد.",
         reset: "إعادة ضبط العرض",
-        noPass: "ما عندك بطاقة تجريبية بعد.",
+        noPass: "لا توجد لديك بطاقة تجريبية بعد.",
         noPassCta: "اختر اشتراكك",
         code: "رمز تجريبي",
-        out: "خلصت الأكواب. بطاقتك تتجدد الشهر الجاي.",
-        history: "آخر الأختام التجريبية",
+        out: "استخدمت جميع الأكواب؛ يتجدد رصيدك في الشهر القادم.",
+        history: "سجل الاستخدام التجريبي",
         noHistory: "لا توجد أختام بعد."
     },
     footer: {
-        tag: "نموذج دراسي لمشهد المقاهي في الكويت.",
+        tag: "نموذج دراسي لفكرة اشتراك القهوة في الكويت.",
         credit: "صورة أصلية أُنشئت لكوفي باس."
     }
 };
