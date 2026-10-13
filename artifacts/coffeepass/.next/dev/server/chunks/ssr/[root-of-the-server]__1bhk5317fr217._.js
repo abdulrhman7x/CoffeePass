@@ -122,6 +122,8 @@ async function RootLayout({ children }) {
                     brand: t.brand,
                     langSwitch: t.langSwitch,
                     langLabel: t.langLabel,
+                    primaryLabel: t.primaryNav,
+                    mobileLabel: t.mobileNav,
                     next: lang === "ar" ? "en" : "ar"
                 }, void 0, false, {
                     fileName: "[project]/artifacts/coffeepass/app/layout.tsx",
@@ -153,22 +155,8 @@ async function RootLayout({ children }) {
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$4$2e$0_$40$types$2b$node$40$25$2e$9$2e$6_react$2d$dom$40$19$2e$1$2e$0_react$40$19$2e$1$2e$0_$5f$react$40$19$2e$1$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                children: [
-                                    t.footer.credit,
-                                    " ",
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$4$2e$0_$40$types$2b$node$40$25$2e$9$2e$6_react$2d$dom$40$19$2e$1$2e$0_react$40$19$2e$1$2e$0_$5f$react$40$19$2e$1$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                        className: "underline underline-offset-2 hover:text-clay",
-                                        href: "https://unsplash.com/",
-                                        target: "_blank",
-                                        rel: "noopener noreferrer",
-                                        children: "unsplash.com"
-                                    }, void 0, false, {
-                                        fileName: "[project]/artifacts/coffeepass/app/layout.tsx",
-                                        lineNumber: 29,
-                                        columnNumber: 34
-                                    }, this)
-                                ]
-                            }, void 0, true, {
+                                children: t.footer.credit
+                            }, void 0, false, {
                                 fileName: "[project]/artifacts/coffeepass/app/layout.tsx",
                                 lineNumber: 29,
                                 columnNumber: 13
@@ -234,6 +222,8 @@ const en = {
         checkout: "Checkout",
         pass: "My Pass"
     },
+    primaryNav: "Primary navigation",
+    mobileNav: "Mobile navigation",
     langSwitch: "عربي",
     langLabel: "Switch to Arabic",
     demo: "Demo",
@@ -266,6 +256,8 @@ const en = {
             "Every cup counted."
         ],
         lede: "Pay once a month in KWD, then order your usual at Kuwait\u2019s favourite coffee brands. Your pass keeps the count.",
+        heroAlt: "A latte in a celadon cup on a sunlit café table.",
+        samplePass: "Sample pass",
         ctaPrimary: "Choose a membership",
         ctaSecondary: "See partner cafés",
         howTitle: "How it works",
@@ -282,6 +274,16 @@ const en = {
                 "Watch it fill",
                 "Every cup gets a stamp. The balance updates itself."
             ]
+        ],
+        aiEyebrow: "CoffeePass AI Barista · demo",
+        aiTitle: "A good cup for this moment.",
+        aiLede: "A small taste of how CoffeePass could help you find your next favourite.",
+        aiButton: "Show another sample",
+        aiNotice: "Sample suggestions only. No live AI or weather service is connected.",
+        aiSuggestions: [
+            "A warm Kuwait afternoon? Try an iced Spanish latte.",
+            "A quiet start to the day calls for a smooth filter coffee.",
+            "Need a little focus? A balanced flat white is a good place to begin."
         ],
         daysTitle: "Made for every kind of coffee day",
         daysLede: "Mornings in Sharq, afternoons in Salmiya, a long drive to the Avenues. The pass fits around your week.",
@@ -309,6 +311,7 @@ const en = {
         ],
         cafesTitle: "Ten brands, one balance",
         cafesLink: "Explore all cafés",
+        cafesNote: "Featured brands in this course demo; no real café partnerships or redemptions are active.",
         valueTitle: "Why a pass",
         value: [
             [
@@ -330,7 +333,7 @@ const en = {
     memberships: {
         eyebrow: "Memberships",
         title: "Choose how much coffee your month needs.",
-        lede: "Every plan works at all ten partner cafés. Prices in Kuwaiti dinar.",
+        lede: "Compare three sample plans, each paired with ten featured café brands. Prices in KWD; no real redemptions are active.",
         select: "Select plan",
         selected: "Selected",
         popular: "Most chosen",
@@ -351,9 +354,9 @@ const en = {
     cafes: {
         eyebrow: "Partner cafés",
         title: "Ten brands. Your usual, wherever you are.",
-        lede: "Your pass balance works across every partner below. Branch availability may vary in this demo.",
+        lede: "A sample café roster for this course project; no real partnerships or redemptions are active.",
         count: "partners",
-        accepted: "Pass accepted"
+        accepted: "Featured in demo"
     },
     checkout: {
         eyebrow: "Checkout",
@@ -394,7 +397,7 @@ const en = {
     },
     footer: {
         tag: "A course prototype for Kuwait\u2019s café scene.",
-        credit: "Hero photo via Unsplash."
+        credit: "Original image created for CoffeePass."
     }
 };
 const ar = {
@@ -406,6 +409,8 @@ const ar = {
         checkout: "الدفع",
         pass: "بطاقتي"
     },
+    primaryNav: "التنقل الرئيسي",
+    mobileNav: "التنقل على الجوال",
     langSwitch: "EN",
     langLabel: "التبديل إلى الإنجليزية",
     demo: "تجريبي",
@@ -438,6 +443,8 @@ const ar = {
             "كل كوب محسوب."
         ],
         lede: "ادفع مرة بالشهر بالدينار، واطلب قهوتك المعتادة من أشهر مقاهي الكويت. البطاقة تحسب عنك.",
+        heroAlt: "لاتيه في كوب بلون أخضر هادئ على طاولة مقهى مضاءة بالشمس.",
+        samplePass: "بطاقة تجريبية",
         ctaPrimary: "اختر اشتراكك",
         ctaSecondary: "شوف المقاهي",
         howTitle: "طريقة الاستخدام",
@@ -455,6 +462,16 @@ const ar = {
                 "كل كوب ينختم، والرصيد يتحدث تلقائياً."
             ]
         ],
+        aiEyebrow: "باريستا كوفي باس الذكي · تجريبي",
+        aiTitle: "قهوة مناسبة لهاللحظة.",
+        aiLede: "لمحة بسيطة عن كيف يساعدك كوفي باس تكتشف قهوتك الجاية.",
+        aiButton: "اعرض اقتراحاً تجريبياً آخر",
+        aiNotice: "اقتراحات تجريبية فقط؛ لا يوجد اتصال مباشر بالذكاء الاصطناعي أو الطقس.",
+        aiSuggestions: [
+            "عصرية الكويت دافية؟ جرّب سبانش لاتيه بارد.",
+            "بداية هادية لليوم تناسبها قهوة مقطرة ناعمة.",
+            "تبي تركّز؟ فلات وايت متوازن بداية حلوة."
+        ],
         daysTitle: "مصمم لكل أنواع أيام القهوة",
         daysLede: "صباح في شرق، عصرية في السالمية، مشوار للأفنيوز. البطاقة تمشي مع أسبوعك.",
         days: [
@@ -471,7 +488,7 @@ const ar = {
             [
                 "16:30",
                 "استراحة العصر",
-                "سبانish لاتيه بارد وقت الحر."
+                "سبانش لاتيه بارد وقت الحر."
             ],
             [
                 "21:00",
@@ -481,6 +498,7 @@ const ar = {
         ],
         cafesTitle: "عشر علامات، رصيد واحد",
         cafesLink: "استكشف كل المقاهي",
+        cafesNote: "علامات معروضة في نموذج الدورة؛ لا توجد شراكات أو عمليات استبدال حقيقية.",
         valueTitle: "ليش البطاقة",
         value: [
             [
@@ -502,7 +520,7 @@ const ar = {
     memberships: {
         eyebrow: "الاشتراكات",
         title: "اختر كمية القهوة اللي يحتاجها شهرك.",
-        lede: "كل الباقات تشتغل في المقاهي العشرة. الأسعار بالدينار الكويتي.",
+        lede: "قارن بين ثلاث باقات تجريبية وقائمة من عشرة مقاهٍ. الأسعار بالدينار الكويتي؛ لا توجد عمليات استبدال حقيقية.",
         select: "اختر الباقة",
         selected: "تم الاختيار",
         popular: "الأكثر اختياراً",
@@ -523,9 +541,9 @@ const ar = {
     cafes: {
         eyebrow: "المقاهي الشريكة",
         title: "عشر علامات. قهوتك المعتادة وين ما كنت.",
-        lede: "رصيد بطاقتك يشتغل عند كل الشركاء. توفر الفروع قد يختلف في هذا العرض التجريبي.",
-        count: "شريك",
-        accepted: "البطاقة مقبولة"
+        lede: "قائمة مقاهي تجريبية لهذا المشروع الدراسي؛ لا توجد شراكات أو عمليات استبدال حقيقية.",
+        count: "مقاهٍ",
+        accepted: "ضمن العرض التجريبي"
     },
     checkout: {
         eyebrow: "الدفع",
@@ -566,10 +584,9 @@ const ar = {
     },
     footer: {
         tag: "نموذج دراسي لمشهد المقاهي في الكويت.",
-        credit: "صورة الواجهة من Unsplash."
+        credit: "صورة أصلية أُنشئت لكوفي باس."
     }
 };
-ar.home.days[2][2] = "سبانش لاتيه بارد وقت الحر.";
 const dict = {
     en,
     ar

@@ -107,6 +107,8 @@
     },
     "outputFileTracingRoot": "/home/runner/workspace",
     "allowedDevOrigins": [
+      "127.0.0.1",
+      "localhost",
       "e54629aa-263b-4739-8775-24b86c8bc7bd-00-11ymvhdwfx99r.pike.replit.dev"
     ],
     "enablePrerenderSourceMaps": true,

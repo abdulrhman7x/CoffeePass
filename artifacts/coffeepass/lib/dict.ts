@@ -3,6 +3,8 @@ export type Lang = "en" | "ar";
 const en = {
   brand: "CoffeePass",
   nav: { home: "Home", memberships: "Memberships", cafes: "Cafés", checkout: "Checkout", pass: "My Pass" },
+  primaryNav: "Primary navigation",
+  mobileNav: "Mobile navigation",
   langSwitch: "عربي",
   langLabel: "Switch to Arabic",
   demo: "Demo",
@@ -16,12 +18,14 @@ const en = {
     plus: { name: "Plus", line: "Most chosen. A cup every few days, nothing wasted." },
     premium: { name: "Premium", line: "Daily ritual, office runs, late diwaniya nights." },
   },
-  rollover: (n: number) => `Up to ${n} unused cups roll over`,
+  rollover: (n: number | string) => `Up to ${n} unused cups roll over`,
   noRollover: "Resets each month",
   home: {
     eyebrow: "Kuwait\u2019s coffee membership",
     title: ["One pass.", "Ten cafés.", "Every cup counted."],
     lede: "Pay once a month in KWD, then order your usual at Kuwait\u2019s favourite coffee brands. Your pass keeps the count.",
+    heroAlt: "A latte in a celadon cup on a sunlit café table.",
+    samplePass: "Sample pass",
     ctaPrimary: "Choose a membership",
     ctaSecondary: "See partner cafés",
     howTitle: "How it works",
@@ -29,6 +33,16 @@ const en = {
       ["Pick your cups", "5, 10 or 20 coffees a month. Fixed price, no surprises."],
       ["Show your pass", "At any partner counter, your pass is your card."],
       ["Watch it fill", "Every cup gets a stamp. The balance updates itself."],
+    ],
+    aiEyebrow: "CoffeePass AI Barista · demo",
+    aiTitle: "A good cup for this moment.",
+    aiLede: "A small taste of how CoffeePass could help you find your next favourite.",
+    aiButton: "Show another sample",
+    aiNotice: "Sample suggestions only. No live AI or weather service is connected.",
+    aiSuggestions: [
+      "A warm Kuwait afternoon? Try an iced Spanish latte.",
+      "A quiet start to the day calls for a smooth filter coffee.",
+      "Need a little focus? A balanced flat white is a good place to begin.",
     ],
     daysTitle: "Made for every kind of coffee day",
     daysLede: "Mornings in Sharq, afternoons in Salmiya, a long drive to the Avenues. The pass fits around your week.",
@@ -40,6 +54,7 @@ const en = {
     ],
     cafesTitle: "Ten brands, one balance",
     cafesLink: "Explore all cafés",
+    cafesNote: "Featured brands in this course demo; no real café partnerships or redemptions are active.",
     valueTitle: "Why a pass",
     value: [
       ["From 1.200 KWD a cup", "Premium brings each coffee down to 1.200 KWD."],
@@ -52,7 +67,7 @@ const en = {
   memberships: {
     eyebrow: "Memberships",
     title: "Choose how much coffee your month needs.",
-    lede: "Every plan works at all ten partner cafés. Prices in Kuwaiti dinar.",
+    lede: "Compare three sample plans, each paired with ten featured café brands. Prices in KWD; no real redemptions are active.",
     select: "Select plan",
     selected: "Selected",
     popular: "Most chosen",
@@ -67,9 +82,9 @@ const en = {
   cafes: {
     eyebrow: "Partner cafés",
     title: "Ten brands. Your usual, wherever you are.",
-    lede: "Your pass balance works across every partner below. Branch availability may vary in this demo.",
+    lede: "A sample café roster for this course project; no real partnerships or redemptions are active.",
     count: "partners",
-    accepted: "Pass accepted",
+    accepted: "Featured in demo",
   },
   checkout: {
     eyebrow: "Checkout",
@@ -110,7 +125,7 @@ const en = {
   },
   footer: {
     tag: "A course prototype for Kuwait\u2019s café scene.",
-    credit: "Hero photo via Unsplash.",
+    credit: "Original image created for CoffeePass.",
   },
 };
 
@@ -119,6 +134,8 @@ export type Dict = typeof en;
 const ar: Dict = {
   brand: "كوفي باس",
   nav: { home: "الرئيسية", memberships: "الاشتراكات", cafes: "المقاهي", checkout: "الدفع", pass: "بطاقتي" },
+  primaryNav: "التنقل الرئيسي",
+  mobileNav: "التنقل على الجوال",
   langSwitch: "EN",
   langLabel: "التبديل إلى الإنجليزية",
   demo: "تجريبي",
@@ -132,12 +149,14 @@ const ar: Dict = {
     plus: { name: "بلس", line: "الأكثر اختياراً. كوب كل كم يوم، بدون هدر." },
     premium: { name: "بريميوم", line: "قهوة كل يوم، طلبات الدوام، وسهرات الديوانية." },
   },
-  rollover: (n: number) => `حتى ${n} أكواب غير مستخدمة تنتقل للشهر التالي`,
+  rollover: (n: number | string) => `حتى ${n} أكواب غير مستخدمة تنتقل للشهر التالي`,
   noRollover: "يتجدد كل شهر",
   home: {
     eyebrow: "اشتراك القهوة في الكويت",
     title: ["بطاقة وحدة.", "عشرة مقاهي.", "كل كوب محسوب."],
     lede: "ادفع مرة بالشهر بالدينار، واطلب قهوتك المعتادة من أشهر مقاهي الكويت. البطاقة تحسب عنك.",
+    heroAlt: "لاتيه في كوب بلون أخضر هادئ على طاولة مقهى مضاءة بالشمس.",
+    samplePass: "بطاقة تجريبية",
     ctaPrimary: "اختر اشتراكك",
     ctaSecondary: "شوف المقاهي",
     howTitle: "طريقة الاستخدام",
@@ -146,16 +165,27 @@ const ar: Dict = {
       ["اعرض بطاقتك", "عند أي مقهى شريك، بطاقتك هي وسيلتك."],
       ["تابع الرصيد", "كل كوب ينختم، والرصيد يتحدث تلقائياً."],
     ],
+    aiEyebrow: "باريستا كوفي باس الذكي · تجريبي",
+    aiTitle: "قهوة مناسبة لهاللحظة.",
+    aiLede: "لمحة بسيطة عن كيف يساعدك كوفي باس تكتشف قهوتك الجاية.",
+    aiButton: "اعرض اقتراحاً تجريبياً آخر",
+    aiNotice: "اقتراحات تجريبية فقط؛ لا يوجد اتصال مباشر بالذكاء الاصطناعي أو الطقس.",
+    aiSuggestions: [
+      "عصرية الكويت دافية؟ جرّب سبانش لاتيه بارد.",
+      "بداية هادية لليوم تناسبها قهوة مقطرة ناعمة.",
+      "تبي تركّز؟ فلات وايت متوازن بداية حلوة.",
+    ],
     daysTitle: "مصمم لكل أنواع أيام القهوة",
     daysLede: "صباح في شرق، عصرية في السالمية، مشوار للأفنيوز. البطاقة تمشي مع أسبوعك.",
     days: [
       ["06:40", "مشوار الصبح", "خذ قهوتك بالطريق قبل زحمة شارع الخليج."],
       ["11:15", "قهوة الاجتماع", "جيب الفريق. بطاقة وحدة وجولة كورتادو."],
-      ["16:30", "استراحة العصر", "سبانish لاتيه بارد وقت الحر."],
+      ["16:30", "استراحة العصر", "سبانش لاتيه بارد وقت الحر."],
       ["21:00", "سوالف آخر الليل", "سوالف طويلة، كوب زيادة، وبدون حسابات عند الكاشير."],
     ],
     cafesTitle: "عشر علامات، رصيد واحد",
     cafesLink: "استكشف كل المقاهي",
+    cafesNote: "علامات معروضة في نموذج الدورة؛ لا توجد شراكات أو عمليات استبدال حقيقية.",
     valueTitle: "ليش البطاقة",
     value: [
       ["من ١٫٢٠٠ د.ك للكوب", "مع بريميوم ينزل سعر الكوب إلى ١٫٢٠٠ د.ك."],
@@ -168,7 +198,7 @@ const ar: Dict = {
   memberships: {
     eyebrow: "الاشتراكات",
     title: "اختر كمية القهوة اللي يحتاجها شهرك.",
-    lede: "كل الباقات تشتغل في المقاهي العشرة. الأسعار بالدينار الكويتي.",
+    lede: "قارن بين ثلاث باقات تجريبية وقائمة من عشرة مقاهٍ. الأسعار بالدينار الكويتي؛ لا توجد عمليات استبدال حقيقية.",
     select: "اختر الباقة",
     selected: "تم الاختيار",
     popular: "الأكثر اختياراً",
@@ -183,9 +213,9 @@ const ar: Dict = {
   cafes: {
     eyebrow: "المقاهي الشريكة",
     title: "عشر علامات. قهوتك المعتادة وين ما كنت.",
-    lede: "رصيد بطاقتك يشتغل عند كل الشركاء. توفر الفروع قد يختلف في هذا العرض التجريبي.",
-    count: "شريك",
-    accepted: "البطاقة مقبولة",
+    lede: "قائمة مقاهي تجريبية لهذا المشروع الدراسي؛ لا توجد شراكات أو عمليات استبدال حقيقية.",
+    count: "مقاهٍ",
+    accepted: "ضمن العرض التجريبي",
   },
   checkout: {
     eyebrow: "الدفع",
@@ -226,9 +256,8 @@ const ar: Dict = {
   },
   footer: {
     tag: "نموذج دراسي لمشهد المقاهي في الكويت.",
-    credit: "صورة الواجهة من Unsplash.",
+    credit: "صورة أصلية أُنشئت لكوفي باس.",
   },
 };
-ar.home.days[2][2] = "سبانش لاتيه بارد وقت الحر.";
 
 export const dict: Record<Lang, Dict> = { en, ar };

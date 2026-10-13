@@ -54,6 +54,12 @@
       "namedRegex": "^/checkout(?:/)?$"
     },
     {
+      "page": "/icon.svg",
+      "regex": "^/icon\\.svg(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/icon\\.svg(?:/)?$"
+    },
+    {
       "page": "/memberships",
       "regex": "^/memberships(?:/)?$",
       "routeKeys": {},

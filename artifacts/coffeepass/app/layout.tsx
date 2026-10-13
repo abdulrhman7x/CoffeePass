@@ -21,12 +21,12 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   return (
     <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} className={`${fraunces.variable} ${outfit.variable} ${arabic.variable}`}>
       <body className="antialiased">
-        <Nav items={items} brand={t.brand} langSwitch={t.langSwitch} langLabel={t.langLabel} next={lang === "ar" ? "en" : "ar"} />
+        <Nav items={items} brand={t.brand} langSwitch={t.langSwitch} langLabel={t.langLabel} primaryLabel={t.primaryNav} mobileLabel={t.mobileNav} next={lang === "ar" ? "en" : "ar"} />
         <main className="pb-24 md:pb-0">{children}</main>
         <footer className="border-t border-bean/10 px-5 pb-28 pt-10 md:pb-10">
           <div className="mx-auto flex max-w-6xl flex-col justify-between gap-2 text-sm text-bean/60 sm:flex-row">
             <p>{t.brand} · {t.footer.tag}</p>
-            <p>{t.footer.credit} <a className="underline underline-offset-2 hover:text-clay" href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">unsplash.com</a></p>
+            <p>{t.footer.credit}</p>
           </div>
         </footer>
       </body>

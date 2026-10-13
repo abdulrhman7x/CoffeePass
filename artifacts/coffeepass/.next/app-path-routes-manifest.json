@@ -3,6 +3,7 @@
   "/_not-found/page": "/_not-found",
   "/cafes/page": "/cafes",
   "/checkout/page": "/checkout",
+  "/icon.svg/route": "/icon.svg",
   "/memberships/page": "/memberships",
   "/page": "/",
   "/pass/page": "/pass"

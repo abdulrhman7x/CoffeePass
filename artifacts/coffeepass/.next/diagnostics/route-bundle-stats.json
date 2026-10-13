@@ -1,10 +1,10 @@
 [
   {
     "route": "/",
-    "firstLoadUncompressedJsBytes": 481747,
+    "firstLoadUncompressedJsBytes": 482711,
     "firstLoadChunkPaths": [
-      ".next/static/chunks/0lllsyp83nesi.js",
-      ".next/static/chunks/0k68lklre0a81.js",
+      ".next/static/chunks/0s5c6i4fksaj7.js",
+      ".next/static/chunks/2-oiaa8xm3rg5.js",
       ".next/static/chunks/14vum4lkyilsd.js",
       ".next/static/chunks/3wgfnz0ufho2_.js",
       ".next/static/chunks/1jclhvn15uy7w.js",
@@ -14,10 +14,10 @@
   },
   {
     "route": "/pass",
-    "firstLoadUncompressedJsBytes": 473128,
+    "firstLoadUncompressedJsBytes": 473974,
     "firstLoadChunkPaths": [
-      ".next/static/chunks/0lllsyp83nesi.js",
-      ".next/static/chunks/0ppmxqhhylorr.js",
+      ".next/static/chunks/0s5c6i4fksaj7.js",
+      ".next/static/chunks/05h2-tbmtldv8.js",
       ".next/static/chunks/14vum4lkyilsd.js",
       ".next/static/chunks/3wgfnz0ufho2_.js",
       ".next/static/chunks/1jclhvn15uy7w.js",
@@ -27,10 +27,10 @@
   },
   {
     "route": "/memberships",
-    "firstLoadUncompressedJsBytes": 470473,
+    "firstLoadUncompressedJsBytes": 471375,
     "firstLoadChunkPaths": [
-      ".next/static/chunks/0lllsyp83nesi.js",
-      ".next/static/chunks/0-196pjcb__mm.js",
+      ".next/static/chunks/0s5c6i4fksaj7.js",
+      ".next/static/chunks/3-v-1i-m9akm1.js",
       ".next/static/chunks/14vum4lkyilsd.js",
       ".next/static/chunks/3wgfnz0ufho2_.js",
       ".next/static/chunks/1jclhvn15uy7w.js",
@@ -40,10 +40,10 @@
   },
   {
     "route": "/checkout",
-    "firstLoadUncompressedJsBytes": 470164,
+    "firstLoadUncompressedJsBytes": 470947,
     "firstLoadChunkPaths": [
-      ".next/static/chunks/0lllsyp83nesi.js",
-      ".next/static/chunks/0lipmzuaz7ro0.js",
+      ".next/static/chunks/0s5c6i4fksaj7.js",
+      ".next/static/chunks/232-o_4td07ch.js",
       ".next/static/chunks/14vum4lkyilsd.js",
       ".next/static/chunks/3wgfnz0ufho2_.js",
       ".next/static/chunks/1jclhvn15uy7w.js",
@@ -53,9 +53,9 @@
   },
   {
     "route": "/_not-found",
-    "firstLoadUncompressedJsBytes": 466917,
+    "firstLoadUncompressedJsBytes": 467143,
     "firstLoadChunkPaths": [
-      ".next/static/chunks/0lllsyp83nesi.js",
+      ".next/static/chunks/0s5c6i4fksaj7.js",
       ".next/static/chunks/14vum4lkyilsd.js",
       ".next/static/chunks/3wgfnz0ufho2_.js",
       ".next/static/chunks/1jclhvn15uy7w.js",
@@ -65,9 +65,9 @@
   },
   {
     "route": "/cafes",
-    "firstLoadUncompressedJsBytes": 466917,
+    "firstLoadUncompressedJsBytes": 467143,
     "firstLoadChunkPaths": [
-      ".next/static/chunks/0lllsyp83nesi.js",
+      ".next/static/chunks/0s5c6i4fksaj7.js",
       ".next/static/chunks/14vum4lkyilsd.js",
       ".next/static/chunks/3wgfnz0ufho2_.js",
       ".next/static/chunks/1jclhvn15uy7w.js",

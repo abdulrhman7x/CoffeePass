@@ -1,9 +1,9 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/cafes/page.js")
-R.c("server/chunks/ssr/[root-of-the-server]__1s1g_3sp1o2h1._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__09iyvrz2ca820._.js")
 R.c("server/chunks/ssr/artifacts_coffeepass_04kz5x6jy1e14._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__0h13cg0u6z4tb._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__0p5wt_az5pz49._.js")
-R.c("server/chunks/ssr/0o91_next_dist_esm_build_templates_app-page_150yu3ulsq94b.js")
+R.c("server/chunks/ssr/[root-of-the-server]__19bw7-d48l-ck._.js")
+R.c("server/chunks/ssr/0o91_next_dist_0t-mb_ohlc0ik._.js")
+R.c("server/chunks/ssr/0o91_next_dist_esm_build_templates_app-page_0wwzt8pm5a34w.js")
 R.c("server/chunks/ssr/[root-of-the-server]__1m1hs3ehs48ng._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__0gltcz19trl8r._.js")
 R.c("server/chunks/ssr/0o91_next_dist_compiled_@edge-runtime_cookies_index_1itfkt-qfa3q-.js")
@@ -13,5 +13,5 @@ R.c("server/chunks/ssr/0o91_next_dist_client_components_builtin_forbidden_1sd77o
 R.c("server/chunks/ssr/0o91_next_dist_client_components_builtin_unauthorized_1lpy8m82e8o5t.js")
 R.c("server/chunks/ssr/0o91_next_dist_client_components_builtin_global-error_1omzf7q9rwrck.js")
 R.c("server/chunks/ssr/artifacts_coffeepass__next-internal_server_app_cafes_page_actions_0al60_8mgv82e.js")
-R.m(62706)
-module.exports=R.m(62706).exports
+R.m(47137)
+module.exports=R.m(47137).exports
