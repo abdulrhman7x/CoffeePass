@@ -1,1 +1,2 @@
 - [Next.js App Router in Replit](nextjs-replit-routing.md) — Remove leftover `src/pages` during conversion; proxied preview HMR needs its route and allowed origin.
+- [CoffeePass product rules](coffeepass-product-rules.md) — Keep the Kuwait coffee membership concept, three plans, ten cafés, bilingual support, AI Barista, and instructor Skill authoritative.
