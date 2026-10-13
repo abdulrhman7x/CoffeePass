@@ -28,6 +28,7 @@ export function Nav({
   lang,
   primaryLabel,
   mobileLabel,
+  userName,
   labels,
 }: {
   items: Item[];
@@ -35,6 +36,7 @@ export function Nav({
   lang: Lang;
   primaryLabel: string;
   mobileLabel: string;
+  userName: string | null;
   labels: Labels;
 }) {
   const path = usePathname();
@@ -87,15 +89,17 @@ export function Nav({
               ) : null}
             </Link>
             <Link
-              href="/pass"
+              href="/account"
               data-testid="link-nav-profile"
-              aria-label={labels.profile}
-              className="grid h-10 w-10 place-items-center rounded-full border border-bean/20 bg-paper text-roast transition-colors hover:border-clay/50 hover:bg-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
+              aria-label={userName ? `${labels.profile}: ${userName}` : labels.profile}
+              title={userName ?? labels.profile}
+              className="flex h-10 min-w-10 items-center justify-center gap-2 rounded-full border border-bean/20 bg-paper px-2.5 text-roast transition-colors hover:border-clay/50 hover:bg-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
                 <circle cx="12" cy="8" r="3.2" />
                 <path d="M5.5 20a6.5 6.5 0 0 1 13 0" />
               </svg>
+              {userName ? <span className="hidden max-w-24 truncate text-sm sm:inline">{userName}</span> : null}
             </Link>
             <LanguageMenu
               lang={lang}

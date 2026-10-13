@@ -30,7 +30,13 @@ export function PlanPicker({ plans, l }: { plans: (Plan & { per: string; cupsLab
   const confirmingPlan = plans.find((plan) => plan.id === confirming);
 
   const selectPlan = (planId: PlanId) => {
-    update((current) => ({ ...current, plan: planId }));
+    const selectedPlan = plans.find((plan) => plan.id === planId);
+    if (!selectedPlan) return;
+    update((current) => ({
+      ...current,
+      plan: planId,
+      used: Math.min(current.used, selectedPlan.cups),
+    }));
     setConfirming(planId);
   };
 

@@ -1,9 +1,9 @@
 [
   {
     "route": "/",
-    "firstLoadUncompressedJsBytes": 487946,
+    "firstLoadUncompressedJsBytes": 487994,
     "firstLoadChunkPaths": [
-      ".next/static/chunks/0ykb9croy_wfz.js",
+      ".next/static/chunks/0kkerhxue2mij.js",
       ".next/static/chunks/2-oiaa8xm3rg5.js",
       ".next/static/chunks/1ndnjamyr9hn5.js",
       ".next/static/chunks/0s2_063l7zya5.js",
@@ -14,9 +14,9 @@
   },
   {
     "route": "/cafes",
-    "firstLoadUncompressedJsBytes": 487208,
+    "firstLoadUncompressedJsBytes": 487256,
     "firstLoadChunkPaths": [
-      ".next/static/chunks/0ykb9croy_wfz.js",
+      ".next/static/chunks/0kkerhxue2mij.js",
       ".next/static/chunks/0k68lklre0a81.js",
       ".next/static/chunks/1ndnjamyr9hn5.js",
       ".next/static/chunks/0s2_063l7zya5.js",
@@ -27,10 +27,36 @@
   },
   {
     "route": "/pass",
-    "firstLoadUncompressedJsBytes": 478225,
+    "firstLoadUncompressedJsBytes": 478296,
     "firstLoadChunkPaths": [
-      ".next/static/chunks/0ykb9croy_wfz.js",
-      ".next/static/chunks/2o09_kvige9am.js",
+      ".next/static/chunks/0kkerhxue2mij.js",
+      ".next/static/chunks/2fskbijt3t-db.js",
+      ".next/static/chunks/1ndnjamyr9hn5.js",
+      ".next/static/chunks/0s2_063l7zya5.js",
+      ".next/static/chunks/1jclhvn15uy7w.js",
+      ".next/static/chunks/21146zzw5eie7.js",
+      ".next/static/chunks/turbopack-3-ry682tkyiqk.js"
+    ]
+  },
+  {
+    "route": "/login",
+    "firstLoadUncompressedJsBytes": 477240,
+    "firstLoadChunkPaths": [
+      ".next/static/chunks/0kkerhxue2mij.js",
+      ".next/static/chunks/1cdrt7pjt5d28.js",
+      ".next/static/chunks/1ndnjamyr9hn5.js",
+      ".next/static/chunks/0s2_063l7zya5.js",
+      ".next/static/chunks/1jclhvn15uy7w.js",
+      ".next/static/chunks/21146zzw5eie7.js",
+      ".next/static/chunks/turbopack-3-ry682tkyiqk.js"
+    ]
+  },
+  {
+    "route": "/signup",
+    "firstLoadUncompressedJsBytes": 477240,
+    "firstLoadChunkPaths": [
+      ".next/static/chunks/0kkerhxue2mij.js",
+      ".next/static/chunks/1cdrt7pjt5d28.js",
       ".next/static/chunks/1ndnjamyr9hn5.js",
       ".next/static/chunks/0s2_063l7zya5.js",
       ".next/static/chunks/1jclhvn15uy7w.js",
@@ -40,10 +66,10 @@
   },
   {
     "route": "/memberships",
-    "firstLoadUncompressedJsBytes": 477006,
+    "firstLoadUncompressedJsBytes": 477116,
     "firstLoadChunkPaths": [
-      ".next/static/chunks/0ykb9croy_wfz.js",
-      ".next/static/chunks/0681598otd840.js",
+      ".next/static/chunks/0kkerhxue2mij.js",
+      ".next/static/chunks/0bt-if6r1buqo.js",
       ".next/static/chunks/1ndnjamyr9hn5.js",
       ".next/static/chunks/0s2_063l7zya5.js",
       ".next/static/chunks/1jclhvn15uy7w.js",
@@ -53,10 +79,23 @@
   },
   {
     "route": "/checkout",
-    "firstLoadUncompressedJsBytes": 475188,
+    "firstLoadUncompressedJsBytes": 475241,
     "firstLoadChunkPaths": [
-      ".next/static/chunks/0ykb9croy_wfz.js",
-      ".next/static/chunks/3lbbpcazz4hfo.js",
+      ".next/static/chunks/0kkerhxue2mij.js",
+      ".next/static/chunks/022umz590mxnd.js",
+      ".next/static/chunks/1ndnjamyr9hn5.js",
+      ".next/static/chunks/0s2_063l7zya5.js",
+      ".next/static/chunks/1jclhvn15uy7w.js",
+      ".next/static/chunks/21146zzw5eie7.js",
+      ".next/static/chunks/turbopack-3-ry682tkyiqk.js"
+    ]
+  },
+  {
+    "route": "/account",
+    "firstLoadUncompressedJsBytes": 473433,
+    "firstLoadChunkPaths": [
+      ".next/static/chunks/0kkerhxue2mij.js",
+      ".next/static/chunks/1rvf40z_--hou.js",
       ".next/static/chunks/1ndnjamyr9hn5.js",
       ".next/static/chunks/0s2_063l7zya5.js",
       ".next/static/chunks/1jclhvn15uy7w.js",
@@ -66,9 +105,9 @@
   },
   {
     "route": "/_not-found",
-    "firstLoadUncompressedJsBytes": 472378,
+    "firstLoadUncompressedJsBytes": 472426,
     "firstLoadChunkPaths": [
-      ".next/static/chunks/0ykb9croy_wfz.js",
+      ".next/static/chunks/0kkerhxue2mij.js",
       ".next/static/chunks/1ndnjamyr9hn5.js",
       ".next/static/chunks/0s2_063l7zya5.js",
       ".next/static/chunks/1jclhvn15uy7w.js",

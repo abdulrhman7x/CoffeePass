@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Outfit, IBM_Plex_Sans_Arabic } from "next/font/google";
 import { Nav } from "@/components/Nav";
+import { getAuthenticatedUser } from "@/lib/auth";
 import { getT } from "@/lib/i18n";
 import "./globals.css";
 
@@ -22,7 +23,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const { lang, t } = await getT();
+  const [{ lang, t }, user] = await Promise.all([
+    getT(),
+    getAuthenticatedUser().catch(() => null),
+  ]);
   const items = (["/", "/memberships", "/cafes", "/checkout", "/pass"] as const).map((href, i) => ({
     href, label: [t.nav.home, t.nav.memberships, t.nav.cafes, t.nav.checkout, t.nav.pass][i],
   }));
@@ -35,10 +39,11 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           lang={lang}
           primaryLabel={t.primaryNav}
           mobileLabel={t.mobileNav}
+          userName={user?.name ?? null}
           labels={{
             cart: t.nav.cart,
             cartSelected: t.nav.cartSelected,
-            profile: t.nav.pass,
+            profile: t.nav.account,
             languageMenu: t.languageMenu,
             languages: t.languages,
           }}

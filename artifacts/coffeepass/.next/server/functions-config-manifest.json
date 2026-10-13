@@ -1,4 +1,12 @@
 {
   "version": 1,
-  "functions": {}
+  "functions": {
+    "/api/auth/login": {},
+    "/api/auth/me": {},
+    "/api/auth/signup": {},
+    "/auth/login": {},
+    "/auth/logout": {},
+    "/auth/me": {},
+    "/auth/signup": {}
+  }
 }

@@ -1,10 +1,21 @@
 {
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
+  "/account/page": "/account",
+  "/api/auth/login/route": "/api/auth/login",
+  "/api/auth/logout/route": "/api/auth/logout",
+  "/api/auth/me/route": "/api/auth/me",
+  "/api/auth/signup/route": "/api/auth/signup",
+  "/auth/login/route": "/auth/login",
+  "/auth/logout/route": "/auth/logout",
+  "/auth/me/route": "/auth/me",
+  "/auth/signup/route": "/auth/signup",
   "/cafes/page": "/cafes",
   "/checkout/page": "/checkout",
   "/icon.svg/route": "/icon.svg",
+  "/login/page": "/login",
   "/memberships/page": "/memberships",
   "/page": "/",
-  "/pass/page": "/pass"
+  "/pass/page": "/pass",
+  "/signup/page": "/signup"
 }

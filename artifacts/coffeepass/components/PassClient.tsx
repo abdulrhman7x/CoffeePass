@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { getPlan, type Cafe, type PlanId } from "@/lib/data";
+import type { Cafe, Plan, PlanId } from "@/lib/data";
 import { useDemo } from "@/lib/demo-store";
 import type { Dict, Lang } from "@/lib/dict";
 import { StampRow } from "./StampRow";
@@ -17,10 +17,10 @@ function DemoCode() {
   );
 }
 
-export function PassClient({ t, lang, names, cafes }: { t: Omit<Dict, "rollover">; lang: Lang; names: Record<PlanId, string>; cafes: Cafe[] }) {
+export function PassClient({ t, lang, names, plans, cafes }: { t: Omit<Dict, "rollover">; lang: Lang; names: Record<PlanId, string>; plans: Plan[]; cafes: Cafe[] }) {
   const { state, update, reset } = useDemo();
   const p = t.pass;
-  const plan = getPlan(state.plan);
+  const plan = plans.find((product) => product.id === state.plan);
   if (!plan || !state.active) {
     return (
       <div className="rounded-[28px] border-2 border-dashed border-bean/20 p-10 text-center">
@@ -29,7 +29,8 @@ export function PassClient({ t, lang, names, cafes }: { t: Omit<Dict, "rollover"
       </div>
     );
   }
-  const left = plan.cups - state.used;
+  const used = Math.min(plan.cups, state.used);
+  const left = Math.max(0, plan.cups - used);
   const numberFormat = new Intl.NumberFormat(lang === "ar" ? "ar-KW" : "en-KW");
   const redeem = () => update((s) => {
     const cafe = cafes[(s.used * 3) % cafes.length];
@@ -51,12 +52,12 @@ export function PassClient({ t, lang, names, cafes }: { t: Omit<Dict, "rollover"
           </div>
           <DemoCode />
         </div>
-        <div className="relative mt-8"><StampRow total={plan.cups} filled={state.used} animateFrom={state.used - 1} size={plan.cups > 10 ? "sm" : "md"} /></div>
+        <div className="relative mt-8"><StampRow total={plan.cups} filled={used} animateFrom={used - 1} size={plan.cups > 10 ? "sm" : "md"} /></div>
         <dl className="relative mt-8 grid grid-cols-2 gap-4 border-t border-cream/15 pt-5 text-sm">
           <div><dt className="text-cream/50">{p.holder}</dt><dd>{p.guest}</dd></div>
           <div><dt className="text-cream/50">{p.status}</dt><dd className="flex items-center gap-2" data-testid="status-demo-pass"><span className="h-2 w-2 rounded-full bg-mint" />{p.active}</dd></div>
           <div><dt className="text-cream/50">{p.code}</dt><dd className="font-mono tracking-wider" dir="ltr">CP-DEMO-0000</dd></div>
-          <div><dt className="text-cream/50">{p.used}</dt><dd className="tabular-nums">{numberFormat.format(state.used)}</dd></div>
+          <div><dt className="text-cream/50">{p.used}</dt><dd className="tabular-nums">{numberFormat.format(used)}</dd></div>
         </dl>
       </article>
       <div className="flex flex-col gap-4">

@@ -1,19 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getT } from "@/lib/i18n";
-import { CAFES, PLANS } from "@/lib/data";
+import { CAFES } from "@/lib/data";
+import { getMembershipCatalog } from "@/lib/products";
 import { StampRow } from "@/components/StampRow";
 import { Eyebrow } from "@/components/Banner";
 import { BaristaDemo } from "@/components/BaristaDemo";
 import { CupMark } from "@/components/Wordmark";
+import { ProductsUnavailable } from "@/components/ProductsUnavailable";
 
 export default async function Home() {
   const { lang, t } = await getT();
   const h = t.home;
+  const catalog = await getMembershipCatalog();
+  const plans = catalog.available ? catalog.plans : [];
   const numberFormat = new Intl.NumberFormat(lang === "ar" ? "ar-KW" : "en-KW");
   const perCupFormat = new Intl.NumberFormat(lang === "ar" ? "ar-KW" : "en-KW", { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-  const plusPlan = PLANS.find((plan) => plan.id === "plus");
-  if (!plusPlan) throw new Error("CoffeePass Plus plan is missing from product data.");
+  const plusPlan = plans.find((plan) => plan.id === "plus");
   return (
     <>
       <section className="mx-auto grid max-w-6xl gap-10 px-5 pb-16 pt-10 md:grid-cols-[1.1fr_1fr] md:items-center md:pt-16">
@@ -33,13 +36,17 @@ export default async function Home() {
             <Image src="/images/coffee-hero-v2.jpg" alt={h.heroAlt} fill priority sizes="(min-width: 768px) 45vw, 100vw" className="object-cover" />
           </div>
           <div className="absolute -bottom-6 start-4 end-4 rounded-3xl bg-paper/95 p-4 shadow-[0_24px_50px_-30px_rgb(43_26_18/.6)] backdrop-blur sm:end-auto sm:w-80">
-            <div className="flex justify-between text-sm"><span className="font-semibold text-roast">{t.plans.plus.name}</span><span className="rounded-full bg-sand px-2 py-0.5 text-[10px] font-medium text-bean">{h.samplePass}</span></div>
-            <p className="mt-1 flex flex-wrap items-center justify-end gap-1 text-xs text-bean/60" dir={lang === "ar" ? "rtl" : "ltr"}>
-              <span dir="ltr">{numberFormat.format(plusPlan.price)} {t.kwd} {t.perMonth}</span>
-              <span aria-hidden="true">·</span>
-              <span>{numberFormat.format(plusPlan.cups)} {t.cups}</span>
-            </p>
-            <div className="mt-2"><StampRow total={10} filled={3} size="sm" /></div>
+            {plusPlan ? (
+              <>
+                <div className="flex justify-between text-sm"><span className="font-semibold text-roast">{lang === "ar" ? plusPlan.nameAr : plusPlan.name}</span><span className="rounded-full bg-sand px-2 py-0.5 text-[10px] font-medium text-bean">{h.samplePass}</span></div>
+                <p className="mt-1 flex flex-wrap items-center justify-end gap-1 text-xs text-bean/60" dir={lang === "ar" ? "rtl" : "ltr"}>
+                  <span dir="ltr">{numberFormat.format(plusPlan.price)} {t.kwd} {t.perMonth}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{numberFormat.format(plusPlan.cups)} {t.cups}</span>
+                </p>
+                <div className="mt-2"><StampRow total={plusPlan.cups} filled={3} size="sm" /></div>
+              </>
+            ) : <ProductsUnavailable message={t.catalogUnavailable} />}
           </div>
         </div>
       </section>
@@ -121,13 +128,14 @@ export default async function Home() {
             <h3 className="font-display text-3xl text-roast">{h.value[0][0]}</h3>
             <p className="mt-2 text-bean/75">{h.value[0][1]}</p>
             <div className="mt-6 space-y-3">
-              {PLANS.map((p) => (
+              {plans.map((p) => (
                 <div key={p.id} className="flex items-center gap-3 text-sm">
-                  <span className="w-20 text-bean">{t.plans[p.id].name}</span>
+                  <span className="w-20 text-bean">{lang === "ar" ? p.nameAr : p.name}</span>
                   <span className="h-2 rounded-full bg-clay" style={{ width: `${(p.price / p.cups / 1.4) * 70}%` }} />
                   <span className="tabular-nums text-bean/70">{perCupFormat.format(p.price / p.cups)}</span>
                 </div>
               ))}
+              {!catalog.available ? <ProductsUnavailable message={t.catalogUnavailable} /> : null}
             </div>
           </div>
           <div className="grid gap-4">

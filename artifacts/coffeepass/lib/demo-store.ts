@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useSyncExternalStore } from "react";
-import { getPlan, type PlanId } from "./data";
+import { isPlanId, type PlanId } from "./data";
 
 const KEY = "coffeepass:v1";
 export type DemoState = { plan: PlanId | null; active: boolean; used: number; log: { c: string; t: number }[] };
@@ -18,8 +18,8 @@ function read(): DemoState {
       cache = EMPTY;
       return cache;
     }
-    const plan = getPlan(parsed.plan) ? parsed.plan as PlanId : null;
-    const maxCups = plan ? getPlan(plan)!.cups : 20;
+    const plan = isPlanId(parsed.plan) ? parsed.plan : null;
+    const maxCups = 20;
     const used = Number.isInteger(parsed.used) ? Math.min(maxCups, Math.max(0, parsed.used)) : 0;
     const log = Array.isArray(parsed.log)
       ? parsed.log

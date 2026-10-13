@@ -1,14 +1,14 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { getPlan, type PlanId } from "@/lib/data";
+import type { Plan, PlanId } from "@/lib/data";
 import { useDemo } from "@/lib/demo-store";
 import type { Dict } from "@/lib/dict";
 
-export function CheckoutClient({ t, names, rollovers, locale }: { t: Omit<Dict, "rollover">; names: Record<PlanId, string>; rollovers: Record<PlanId, string>; locale: string }) {
+export function CheckoutClient({ t, plans, names, rollovers, locale }: { t: Omit<Dict, "rollover">; plans: Plan[]; names: Record<PlanId, string>; rollovers: Record<PlanId, string>; locale: string }) {
   const { state, update } = useDemo();
   const [done, setDone] = useState(false);
-  const plan = getPlan(state.plan);
+  const plan = plans.find((product) => product.id === state.plan);
   const c = t.checkout;
   const numberFormat = new Intl.NumberFormat(locale);
   const moneyFormat = new Intl.NumberFormat(locale, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
