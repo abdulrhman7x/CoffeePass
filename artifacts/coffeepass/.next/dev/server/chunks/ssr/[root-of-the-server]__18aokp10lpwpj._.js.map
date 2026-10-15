@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///home/runner/workspace/artifacts/coffeepass/app/page.tsx"],"sourcesContent":["export default function Home() {\n  return null;\n}\n"],"names":["Home"],"mappings":";;;;AAAe,SAASA;IACtB,OAAO;AACT"}}]
-}
