@@ -6,6 +6,13 @@ import type { Dict, Lang } from "@/lib/dict";
 import { StampRow } from "./StampRow";
 import { CupMark } from "./Wordmark";
 
+export type PaidPassOrder = {
+  id: string;
+  purchasedAt: string;
+  total: number;
+  items: { name: string; quantity: number }[];
+};
+
 function DemoCode() {
   // Deterministic decorative pattern, intentionally not a scannable code.
   const cells = Array.from({ length: 81 }, (_, i) => ((i * 37) % 11) % 3 === 0 || [0, 1, 9, 10, 7, 8, 16, 17, 63, 64, 72, 73].includes(i));
@@ -17,9 +24,65 @@ function DemoCode() {
   );
 }
 
-export function PassClient({ t, lang, names, plans, cafes }: { t: Omit<Dict, "rollover">; lang: Lang; names: Record<PlanId, string>; plans: Plan[]; cafes: Cafe[] }) {
+export function PassClient({ t, lang, names, plans, cafes, purchases }: { t: Omit<Dict, "rollover">; lang: Lang; names: Record<PlanId, string>; plans: Plan[]; cafes: Cafe[]; purchases: PaidPassOrder[] }) {
   const { state, update, reset } = useDemo();
   const p = t.pass;
+  const dateFormat = new Intl.DateTimeFormat(lang === "ar" ? "ar-KW" : "en-KW", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "Asia/Kuwait",
+  });
+  const moneyFormat = new Intl.NumberFormat(lang === "ar" ? "ar-KW" : "en-KW", {
+    minimumFractionDigits: 3,
+    maximumFractionDigits: 3,
+  });
+
+  if (purchases.length > 0) {
+    return (
+      <section aria-labelledby="purchased-passes-heading">
+        <div className="max-w-2xl">
+          <h1 id="purchased-passes-heading" className="font-display text-3xl text-roast">{p.purchasedTitle}</h1>
+          <p className="mt-2 text-bean/70">{p.purchasedIntro}</p>
+        </div>
+        <div className="mt-6 grid gap-5">
+          {purchases.map((purchase) => (
+            <article key={purchase.id} data-testid="card-purchased-pass" className="overflow-hidden rounded-[28px] bg-paper ring-1 ring-bean/10">
+              <div className="bg-roast p-6 text-cream sm:p-8">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <p className="flex items-center gap-2 text-sm text-cream/75">
+                    <CupMark className="h-4 w-4 text-mint" />
+                    {t.brand} · {p.purchased}
+                  </p>
+                  <span data-testid="status-purchased-pass" className="rounded-full bg-mint/20 px-3 py-1 text-xs font-semibold text-mint">{p.paid}</span>
+                </div>
+                <ul className="mt-5 divide-y divide-cream/15">
+                  {purchase.items.map((item, index) => (
+                    <li key={`${purchase.id}-${index}`} className="flex items-center justify-between gap-4 py-3 first:pt-0 last:pb-0">
+                      <span className="font-display text-2xl">{item.name}</span>
+                      {item.quantity > 1 ? <span className="text-sm text-cream/70">{item.quantity} ×</span> : null}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="grid gap-4 p-6 sm:grid-cols-2 sm:p-8">
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-bean/55">{p.purchaseDate}</p>
+                  <p className="mt-1 font-medium text-roast">{dateFormat.format(new Date(purchase.purchasedAt))}</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-bean/55">{p.purchaseTotal}</p>
+                  <p className="mt-1 font-medium text-roast" dir="ltr">{moneyFormat.format(purchase.total)} {t.kwd}</p>
+                </div>
+                <p className="rounded-2xl bg-sand/70 px-4 py-3 text-sm leading-6 text-bean sm:col-span-2">{p.notRedeemable}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
   const plan = plans.find((product) => product.id === state.plan);
   if (!plan || !state.active) {
     return (
