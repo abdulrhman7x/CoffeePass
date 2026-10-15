@@ -5,7 +5,7 @@ import type { Plan, PlanId } from "@/lib/data";
 import { useDemo } from "@/lib/demo-store";
 import type { Dict } from "@/lib/dict";
 
-export function CheckoutClient({ t, plans, names, rollovers, locale, isAuthenticated }: { t: Omit<Dict, "rollover">; plans: Plan[]; names: Record<PlanId, string>; rollovers: Record<PlanId, string>; locale: string; isAuthenticated: boolean }) {
+export function CheckoutClient({ t, plans, names, rollovers, usdCheckoutCents, locale, isAuthenticated }: { t: Omit<Dict, "rollover">; plans: Plan[]; names: Record<PlanId, string>; rollovers: Record<PlanId, string>; usdCheckoutCents: Record<PlanId, number>; locale: string; isAuthenticated: boolean }) {
   const { state } = useDemo();
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
@@ -13,6 +13,12 @@ export function CheckoutClient({ t, plans, names, rollovers, locale, isAuthentic
   const c = t.checkout;
   const numberFormat = new Intl.NumberFormat(locale);
   const moneyFormat = new Intl.NumberFormat(locale, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+  const usdMoneyFormat = new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
   if (!plan) {
     return (
       <div className="rounded-[28px] border-2 border-dashed border-bean/20 p-10 text-center">
@@ -38,6 +44,15 @@ export function CheckoutClient({ t, plans, names, rollovers, locale, isAuthentic
         <div className="flex items-baseline justify-between">
           <span className="text-bean">{c.subtotal}</span>
           <span className="font-display text-4xl tabular-nums text-roast">{moneyFormat.format(plan.price)} <span className="text-base">{t.kwd}</span></span>
+        </div>
+        <div className="mt-4 rounded-2xl border border-bean/10 bg-paper px-4 py-4">
+          <div className="flex items-baseline justify-between gap-4">
+            <span className="text-sm text-bean">{c.sandboxUsdAmount}</span>
+            <span className="font-display text-2xl tabular-nums text-roast">
+              {usdMoneyFormat.format(usdCheckoutCents[plan.id] / 100)}
+            </span>
+          </div>
+          <p className="mt-2 text-xs leading-6 text-bean/70">{c.sandboxUsdRateNote}</p>
         </div>
         <div className="mt-6" aria-live="polite">
           {!isAuthenticated ? (

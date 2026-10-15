@@ -2,6 +2,7 @@ import { getAuthenticatedUser } from "@/lib/auth";
 import { connectDB } from "@/lib/db";
 import { getLang } from "@/lib/i18n";
 import { getStripeClient } from "@/lib/stripe";
+import { getUsdSandboxQuote } from "@/lib/stripe-sandbox-pricing";
 import { isPlanId } from "@/lib/data";
 import { Order } from "@/models/Order";
 import { Product } from "@/models/Product";
@@ -64,17 +65,19 @@ export async function POST(request: Request) {
       );
     }
 
-    const amountInFils = Math.round(product.price * 1_000);
+    const kwdAmountFils = Math.round(product.price * 1_000);
     if (
       product.currency !== "KWD" ||
-      !Number.isSafeInteger(amountInFils) ||
-      amountInFils <= 0
+      !Number.isSafeInteger(kwdAmountFils) ||
+      kwdAmountFils <= 0
     ) {
       return Response.json(
         { error: "INVALID_PLAN_PRICE" },
         { status: 409, headers: jsonHeaders },
       );
     }
+
+    const checkoutQuote = getUsdSandboxQuote(product.price);
 
     const lang = await getLang();
     const order = await Order.create({
@@ -91,6 +94,9 @@ export async function POST(request: Request) {
       ],
       total: product.price,
       currency: "KWD",
+      stripeCheckoutAmountCents: checkoutQuote.amountCents,
+      stripeCheckoutCurrency: checkoutQuote.currency,
+      kwdToUsdTestRate: checkoutQuote.rate,
       status: "pending",
     });
     orderId = order.id;
@@ -114,8 +120,8 @@ export async function POST(request: Request) {
           {
             quantity: 1,
             price_data: {
-              currency: "kwd",
-              unit_amount: amountInFils,
+              currency: checkoutQuote.stripeCurrency,
+              unit_amount: checkoutQuote.amountCents,
               product_data: {
                 name: lang === "ar" ? product.nameAr : product.name,
                 description:

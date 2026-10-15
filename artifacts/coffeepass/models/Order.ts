@@ -23,6 +23,23 @@ const orderSchema = new mongoose.Schema(
     ],
     total: { type: Number, required: true, min: 0 },
     currency: { type: String, required: true, enum: ["KWD"], default: "KWD" },
+    stripeCheckoutAmountCents: {
+      type: Number,
+      required: true,
+      min: 1,
+      validate: Number.isSafeInteger,
+    },
+    stripeCheckoutCurrency: {
+      type: String,
+      required: true,
+      enum: ["USD"],
+      default: "USD",
+    },
+    kwdToUsdTestRate: {
+      type: Number,
+      required: true,
+      min: Number.MIN_VALUE,
+    },
     status: {
       type: String,
       required: true,

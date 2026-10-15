@@ -6,6 +6,7 @@ import { getAuthenticatedUser } from "@/lib/auth";
 import { CheckoutClient } from "@/components/CheckoutClient";
 import { DemoBanner, Eyebrow } from "@/components/Banner";
 import { ProductsUnavailable } from "@/components/ProductsUnavailable";
+import { getUsdSandboxQuote } from "@/lib/stripe-sandbox-pricing";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getT();
@@ -23,6 +24,9 @@ export default async function Checkout() {
   const names = Object.fromEntries(plans.map((p) => [p.id, lang === "ar" ? p.nameAr : p.name])) as Record<PlanId, string>;
   const numberFormat = new Intl.NumberFormat(lang === "ar" ? "ar-KW" : "en-KW");
   const rollovers = Object.fromEntries(plans.map((p) => [p.id, p.rollover ? full.rollover(numberFormat.format(p.rollover)) : t.noRollover])) as Record<PlanId, string>;
+  const usdCheckoutCents = Object.fromEntries(
+    plans.map((plan) => [plan.id, getUsdSandboxQuote(plan.price).amountCents]),
+  ) as Record<PlanId, number>;
   return (
     <div className="mx-auto max-w-2xl px-5 py-12 md:py-16">
       <div className="rise"><Eyebrow>{t.checkout.eyebrow}</Eyebrow>
@@ -31,7 +35,7 @@ export default async function Checkout() {
       <div className="rise d1 mt-6"><DemoBanner label={t.demo} text={t.checkout.banner} /></div>
       <div className="rise d2 mt-8">
         {catalog.available
-          ? <CheckoutClient t={t} plans={plans} names={names} rollovers={rollovers} locale={lang === "ar" ? "ar-KW" : "en-KW"} isAuthenticated={Boolean(user)} />
+          ? <CheckoutClient t={t} plans={plans} names={names} rollovers={rollovers} usdCheckoutCents={usdCheckoutCents} locale={lang === "ar" ? "ar-KW" : "en-KW"} isAuthenticated={Boolean(user)} />
           : <ProductsUnavailable message={t.catalogUnavailable} />}
       </div>
     </div>

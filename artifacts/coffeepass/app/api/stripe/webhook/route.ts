@@ -1,6 +1,7 @@
 import type Stripe from "stripe";
 import { connectDB } from "@/lib/db";
 import { getStripeClient, getStripeWebhookSecret } from "@/lib/stripe";
+import { getUsdSandboxQuote } from "@/lib/stripe-sandbox-pricing";
 import { Order } from "@/models/Order";
 
 export const runtime = "nodejs";
@@ -79,7 +80,7 @@ export async function POST(request: Request) {
       }
 
       const item = order.items[0];
-      const expectedAmount = Math.round(order.total * 1_000);
+      const expectedQuote = getUsdSandboxQuote(order.total);
       const paymentIntentId =
         typeof session.payment_intent === "string"
           ? session.payment_intent
@@ -90,8 +91,11 @@ export async function POST(request: Request) {
         item?.product.toString() !== productId ||
         item?.productSlug !== planId ||
         order.currency !== "KWD" ||
-        session.currency !== "kwd" ||
-        session.amount_total !== expectedAmount ||
+        order.stripeCheckoutCurrency !== expectedQuote.currency ||
+        order.kwdToUsdTestRate !== expectedQuote.rate ||
+        order.stripeCheckoutAmountCents !== expectedQuote.amountCents ||
+        session.currency !== expectedQuote.stripeCurrency ||
+        session.amount_total !== order.stripeCheckoutAmountCents ||
         order.stripeCheckoutSessionId !== session.id
       ) {
         return Response.json(
