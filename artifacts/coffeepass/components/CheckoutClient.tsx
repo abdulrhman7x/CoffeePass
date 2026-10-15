@@ -5,9 +5,10 @@ import type { Plan, PlanId } from "@/lib/data";
 import { useDemo } from "@/lib/demo-store";
 import type { Dict } from "@/lib/dict";
 
-export function CheckoutClient({ t, plans, names, rollovers, locale }: { t: Omit<Dict, "rollover">; plans: Plan[]; names: Record<PlanId, string>; rollovers: Record<PlanId, string>; locale: string }) {
-  const { state, update } = useDemo();
-  const [done, setDone] = useState(false);
+export function CheckoutClient({ t, plans, names, rollovers, locale, isAuthenticated }: { t: Omit<Dict, "rollover">; plans: Plan[]; names: Record<PlanId, string>; rollovers: Record<PlanId, string>; locale: string; isAuthenticated: boolean }) {
+  const { state } = useDemo();
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState("");
   const plan = plans.find((product) => product.id === state.plan);
   const c = t.checkout;
   const numberFormat = new Intl.NumberFormat(locale);
@@ -38,17 +39,48 @@ export function CheckoutClient({ t, plans, names, rollovers, locale }: { t: Omit
           <span className="text-bean">{c.subtotal}</span>
           <span className="font-display text-4xl tabular-nums text-roast">{moneyFormat.format(plan.price)} <span className="text-base">{t.kwd}</span></span>
         </div>
-        <div aria-live="polite">
-          {done ? (
-            <div className="mt-6 space-y-3">
-              <p className="rounded-2xl bg-mint/30 px-4 py-3 text-sm text-mintdeep">{c.done}</p>
-              <Link href="/pass" data-testid="link-open-demo-pass" className="block rounded-full bg-roast py-4 text-center font-semibold text-cream">{c.viewPass}</Link>
+        <div className="mt-6" aria-live="polite">
+          {!isAuthenticated ? (
+            <div className="space-y-3">
+              <p className="rounded-2xl bg-paper px-4 py-3 text-sm text-bean">{c.loginRequired}</p>
+              <Link href="/login" data-testid="link-checkout-login" className="block rounded-full bg-roast py-4 text-center font-semibold text-cream transition hover:bg-bean">{c.loginToContinue}</Link>
             </div>
           ) : (
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <button type="button" data-testid="button-activate-demo-pass" onClick={() => { update((s) => ({ ...s, active: true, used: 0, log: [] })); setDone(true); }} className="flex-1 rounded-full bg-clay py-4 font-semibold text-cream transition hover:bg-bean">{c.confirm}</button>
-              <Link href="/memberships" data-testid="link-change-membership" className="rounded-full border border-bean/25 px-6 py-4 text-center text-sm text-bean">{c.change}</Link>
-            </div>
+            <>
+              {error ? <p role="alert" className="mb-3 rounded-2xl bg-red-100 px-4 py-3 text-sm text-red-900">{error}</p> : null}
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  data-testid="button-stripe-checkout"
+                  disabled={pending}
+                  onClick={async () => {
+                    setPending(true);
+                    setError("");
+                    try {
+                      const response = await fetch("/api/checkout", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ planId: plan.id }),
+                      });
+                      const result = await response.json() as { url?: string; error?: string };
+                      if (!response.ok || !result.url) {
+                        setError(result.error === "UNAUTHENTICATED" ? c.loginRequired : c.requestFailed);
+                        return;
+                      }
+                      window.location.assign(result.url);
+                    } catch {
+                      setError(c.requestFailed);
+                    } finally {
+                      setPending(false);
+                    }
+                  }}
+                  className="flex-1 rounded-full bg-clay py-4 font-semibold text-cream transition hover:bg-bean disabled:cursor-wait disabled:opacity-60"
+                >
+                  {pending ? c.processing : c.pay}
+                </button>
+                <Link href="/memberships" data-testid="link-change-membership" className="rounded-full border border-bean/25 px-6 py-4 text-center text-sm text-bean">{c.change}</Link>
+              </div>
+            </>
           )}
         </div>
         <p className="mt-4 text-xs text-bean/60">{c.terms}</p>

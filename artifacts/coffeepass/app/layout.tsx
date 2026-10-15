@@ -17,8 +17,8 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s · ${t.brand}`,
     },
     description: lang === "ar"
-      ? "نموذج دراسي ثنائي اللغة لفكرة اشتراك القهوة في الكويت. الدفع واستبدال الأكواب تجريبيان."
-      : "A bilingual course demo for a Kuwait coffee membership concept. Checkout and café redemptions are simulated.",
+      ? "نموذج دراسي ثنائي اللغة لفكرة اشتراك القهوة في الكويت. الدفع عبر Stripe Sandbox فقط، واستبدال الأكواب تجريبي."
+      : "A bilingual course demo for a Kuwait coffee membership concept. Checkout uses Stripe Sandbox; café redemptions remain demo-only.",
   };
 }
 

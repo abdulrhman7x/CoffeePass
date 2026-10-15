@@ -1,3 +1,4 @@
 - [Next.js App Router in Replit](nextjs-replit-routing.md) — Remove leftover `src/pages` during conversion; proxied preview HMR needs its route and allowed origin.
 - [CoffeePass product rules](coffeepass-product-rules.md) — Keep the Kuwait coffee membership concept, three plans, ten cafés, bilingual support, AI Barista, and instructor Skill authoritative.
 - [Next server-only and seed scripts](next-server-only-seeding.md) — Keep shared Mongoose connection helpers importable by standalone `tsx` scripts; mark app-only services instead.
+- [CoffeePass local API checks](coffeepass-local-api-routing.md) — Test the web app through its own workflow port; the workspace domain root can route to the separate Express service.
