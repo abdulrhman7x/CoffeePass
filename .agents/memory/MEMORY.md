@@ -2,3 +2,4 @@
 - [CoffeePass product rules](coffeepass-product-rules.md) — Keep the Kuwait coffee membership concept, three plans, ten cafés, bilingual support, AI Barista, and instructor Skill authoritative.
 - [Next server-only and seed scripts](next-server-only-seeding.md) — Keep shared Mongoose connection helpers importable by standalone `tsx` scripts; mark app-only services instead.
 - [CoffeePass local API checks](coffeepass-local-api-routing.md) — Test the web app through its own workflow port; the workspace domain root can route to the separate Express service.
+- [Next.js build workflow](nextjs-build-workflow.md) — Stop the CoffeePass dev workflow before production builds to avoid Turbopack errors from concurrent `.next` writes.
