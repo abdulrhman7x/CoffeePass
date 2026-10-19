@@ -8,6 +8,7 @@ import { ProductsUnavailable } from "@/components/ProductsUnavailable";
 import { getAuthenticatedUser } from "@/lib/auth";
 import { connectDB } from "@/lib/db";
 import { Order } from "@/models/Order";
+import { addOneCalendarMonth } from "@/lib/membership-term";
 
 export const dynamic = "force-dynamic";
 
@@ -30,7 +31,7 @@ export default async function Pass() {
   if (user) {
     await connectDB();
     const orders = await Order.find({ user: user.id, status: "paid" })
-      .select("createdAt paidAt total items.productName items.productNameAr items.quantity")
+      .select("createdAt paidAt total items.productName items.productNameAr items.productSlug items.monthlyCups items.quantity")
       .sort({ paidAt: -1, createdAt: -1 })
       .lean()
       .exec();
@@ -38,13 +39,24 @@ export default async function Pass() {
     purchases = orders.map((order) => ({
       id: order._id.toString(),
       purchasedAt: (order.paidAt ?? order.createdAt).toISOString(),
+      validUntil: addOneCalendarMonth(order.paidAt ?? order.createdAt).toISOString(),
       total: order.total,
-      items: order.items.map((item: { productName?: string; productNameAr?: string; quantity: number }) => ({
-        name: lang === "ar"
-          ? item.productNameAr || item.productName || t.pass.membership
-          : item.productName || item.productNameAr || t.pass.membership,
-        quantity: item.quantity,
-      })),
+      items: order.items.map((item: {
+        productName?: string;
+        productNameAr?: string;
+        productSlug?: string;
+        monthlyCups?: number;
+        quantity: number;
+      }) => {
+        const plan = plans.find((candidate) => candidate.id === item.productSlug);
+        return {
+          name: lang === "ar"
+            ? item.productNameAr || item.productName || t.pass.membership
+            : item.productName || item.productNameAr || t.pass.membership,
+          quantity: item.quantity,
+          monthlyCups: item.monthlyCups ?? plan?.cups ?? 0,
+        };
+      }),
     }));
   }
 

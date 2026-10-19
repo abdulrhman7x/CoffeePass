@@ -88,6 +88,7 @@ export async function POST(request: Request) {
           productSlug: product.slug,
           productName: product.name,
           productNameAr: product.nameAr,
+          monthlyCups: product.cups,
           quantity: 1,
           price: product.price,
         },

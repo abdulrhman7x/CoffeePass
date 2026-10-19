@@ -17,6 +17,7 @@ const orderSchema = new mongoose.Schema(
         productSlug: { type: String, enum: ["basic", "plus", "premium"] },
         productName: { type: String, trim: true },
         productNameAr: { type: String, trim: true },
+        monthlyCups: { type: Number, min: 1, max: 20 },
         quantity: { type: Number, required: true, min: 1 },
         price: { type: Number, required: true, min: 0 },
       },

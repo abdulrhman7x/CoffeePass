@@ -9,8 +9,9 @@ import { CupMark } from "./Wordmark";
 export type PaidPassOrder = {
   id: string;
   purchasedAt: string;
+  validUntil: string;
   total: number;
-  items: { name: string; quantity: number }[];
+  items: { name: string; quantity: number; monthlyCups: number }[];
 };
 
 function DemoCode() {
@@ -37,6 +38,7 @@ export function PassClient({ t, lang, names, plans, cafes, purchases }: { t: Omi
     minimumFractionDigits: 3,
     maximumFractionDigits: 3,
   });
+  const numberFormat = new Intl.NumberFormat(lang === "ar" ? "ar-KW" : "en-KW");
 
   if (purchases.length > 0) {
     return (
@@ -60,7 +62,10 @@ export function PassClient({ t, lang, names, plans, cafes, purchases }: { t: Omi
                   {purchase.items.map((item, index) => (
                     <li key={`${purchase.id}-${index}`} className="flex items-center justify-between gap-4 py-3 first:pt-0 last:pb-0">
                       <span className="font-display text-2xl">{item.name}</span>
-                      {item.quantity > 1 ? <span className="text-sm text-cream/70">{item.quantity} ×</span> : null}
+                      <span className="text-end text-sm text-cream/75">
+                        {numberFormat.format(item.monthlyCups)} {t.cups}
+                        {item.quantity > 1 ? ` · ${numberFormat.format(item.quantity)} ×` : ""}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -73,6 +78,10 @@ export function PassClient({ t, lang, names, plans, cafes, purchases }: { t: Omi
                 <div>
                   <p className="text-xs uppercase tracking-widest text-bean/55">{p.purchaseTotal}</p>
                   <p className="mt-1 font-medium text-roast" dir="ltr">{moneyFormat.format(purchase.total)} {t.kwd}</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-bean/55">{p.validUntil}</p>
+                  <p className="mt-1 font-medium text-roast">{dateFormat.format(new Date(purchase.validUntil))}</p>
                 </div>
                 <p className="rounded-2xl bg-sand/70 px-4 py-3 text-sm leading-6 text-bean sm:col-span-2">{p.notRedeemable}</p>
               </div>
@@ -94,7 +103,6 @@ export function PassClient({ t, lang, names, plans, cafes, purchases }: { t: Omi
   }
   const used = Math.min(plan.cups, state.used);
   const left = Math.max(0, plan.cups - used);
-  const numberFormat = new Intl.NumberFormat(lang === "ar" ? "ar-KW" : "en-KW");
   const redeem = () => update((s) => {
     const cafe = cafes[(s.used * 3) % cafes.length];
     const timestamp = Math.max(Date.now(), (s.log[0]?.t ?? 0) + 1);

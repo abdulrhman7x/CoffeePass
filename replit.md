@@ -38,6 +38,9 @@ _Populate as you build — non-obvious choices a reader couldn't infer from the 
 
 _Describe the high-level user-facing capabilities of this app once they exist._
 
+- Treat the separate original/deployed CoffeePass project as reference only; make all changes exclusively in this current Next.js CoffeePass project.
+- Memberships are one-time purchases for a one-month pass and do not renew automatically.
+
 ## User preferences
 
 _Populate as you build — explicit user instructions worth remembering across sessions._
