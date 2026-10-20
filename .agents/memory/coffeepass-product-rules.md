@@ -11,6 +11,8 @@ Present these names as featured brands in the demo roster only. Do not label the
 
 Monthly passes are one-time purchases for one calendar month; they do not renew automatically.
 
+The Café Portal presentation dashboard uses a fictional café and isolated demo transaction records. Never calculate café earnings from paid membership orders or describe simulated records as real redemptions. Any real redemption, settlement, or payment behavior needs separate scope and approval.
+
 **Why:** The user explicitly specified these product requirements and designated the instructor Skill as primary.
 
-**How to apply:** Keep these requirements intact in future CoffeePass planning and implementation. If the instructor Skill conflicts with a user request, ask before making the conflicting change. Other mismatched plan benefits remain unconfirmed.
+**How to apply:** Keep these requirements intact in future CoffeePass planning and implementation. The café demo ledger must query only its own demo records. If the instructor Skill conflicts with a user request, ask before making the conflicting change. Other mismatched plan benefits remain unconfirmed.

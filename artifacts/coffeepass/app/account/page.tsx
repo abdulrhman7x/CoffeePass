@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { AccountActions } from "@/components/AccountActions";
 import { ProductsUnavailable } from "@/components/ProductsUnavailable";
 import { getAuthenticatedUser } from "@/lib/auth";
+import { getCafePortalAccess } from "@/lib/cafe-portal";
 import { getT } from "@/lib/i18n";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,6 +31,9 @@ export default async function AccountPage() {
   if (!userResult.user) redirect("/login");
 
   const user = userResult.user;
+  const hasCafePortalAccess = await getCafePortalAccess(user.id)
+    .then(Boolean)
+    .catch(() => false);
   const memberSince = new Intl.DateTimeFormat(
     lang === "ar" ? "ar-KW" : "en-KW",
     { day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Kuwait" },
@@ -75,6 +79,14 @@ export default async function AccountPage() {
           >
             {t.auth.memberships}
           </Link>
+          {hasCafePortalAccess ? (
+            <Link
+              href="/cafe-portal"
+              className="inline-flex min-h-11 items-center justify-center rounded-full border border-bean/20 px-5 text-sm font-semibold text-roast transition-colors hover:bg-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay"
+            >
+              {t.auth.cafePortal}
+            </Link>
+          ) : null}
           <div className="sm:ms-auto">
             <AccountActions copy={t.auth} />
           </div>

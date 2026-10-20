@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start --hostname 0.0.0.0 --port $PORT",
     "typecheck": "tsc --noEmit",
-    "db:seed": "tsx scripts/seed-products.ts"
+    "db:seed": "tsx scripts/seed-products.ts",
+    "db:seed-cafe-demo": "tsx scripts/seed-cafe-demo.ts"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
